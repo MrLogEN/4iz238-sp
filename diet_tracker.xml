@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diet_tracker>
+    <users>
+        <user>
+            <name>Jan Novák</name>
+            <email>jan.novak@example.cz</email>
+            <date_of_birth>2025-12-03</date_of_birth>
+            <sex>male</sex>
+            <current_state>
+                <height unit="cm">177</height>
+                <weight unit="kg">81</weight>
+                <bmi>25</bmi>
+            </current_state>
+            <long_term_goals>
+                <weight unit="kg">72</weight>
+                <bmi>23</bmi>
+            </long_term_goals>
+            <daily_logs>
+                <daily_log date="2025-11-21">
+                    <daily_goal>
+                        <energy unit="kcal">2100</energy>
+                        <water unit="l">2.2</water>
+                        <protein unit="g">120</protein>
+                        <carbohydrates unit="g">
+                            <total>230</total>
+                            <sugars>21</sugars>
+                        </carbohydrates>
+                        <fats unit="g">
+                            <total>40</total>
+                            <saturated_fats>5.93</saturated_fats>
+                            <trans_fats>2.1</trans_fats>
+                            <monosaturated_fats>3.7</monosaturated_fats>
+                            <polysaturated_fats>1.32</polysaturated_fats>
+                        </fats>
+                        <cholesterol unit="mg">450</cholesterol>
+                        <fiber unit="g">2.25</fiber>
+                        <calcium unit="mg">12</calcium>
+                        <sodium unim="mg">35</sodium>
+                        <salt unit="g">8</salt>
+                        <phe unit="mg">700</phe>
+                    </daily_goal>
+                    <meals>
+                        <meal>
+                            <name>Jogurt s rohlíkem</name>
+                            <note>Prostě jeden jogurt s rohlíkem</note>
+                            <servings>1</servings>
+                            <ingredients>
+                                <ingredient>
+                                    <name>Řecký jogurt bílý 0% tuku</name>
+                                    <brand>Milko</brand>
+                                    <serving>
+                                        <unit_type>g</unit_type>
+                                        <amount>130</amount>
+                                    </serving>
+                                    <base_values>
+                                        <energy unit="kcal">80.58</energy>
+                                        <protein unit="g">14</protein>
+                                        <carbohydrates unit="g">
+                                            <total>4.9</total>
+                                            <sugars>4.9</sugars>
+                                        </carbohydrates>
+                                        <fats unit="g">
+                                            <total>0.42</total>
+                                            <saturated_fats>0.28</saturated_fats>
+                                        </fats>
+                                        <salt unit="g">0.14</salt>
+                                        <phe unit="mg">700</phe>
+                                    </base_values>
+                                </ingredient>
+                                <ingredient>
+                                    <name>rohlík bílý</name>
+                                    <serving>
+                                        <unit_type>pcs</unit_type>
+                                        <amount>1</amount>
+                                    </serving>
+                                    <base_values>
+                                        <energy unit="kcal">130.14</energy>
+                                        <protein unit="g">4.11</protein>
+                                        <carbohydrates unit="g">
+                                            <total>24.14</total>
+                                        </carbohydrates>
+                                        <fats unit="g">
+                                            <total>1.55</total>
+                                            <saturated_fats>0.5</saturated_fats>
+                                            <monosaturated_fats>0.45</monosaturated_fats>
+                                            <polysaturated_fats>0.45</polysaturated_fats>
+                                        </fats>
+                                        <fiber unit="g">1.87</fiber>
+                                        <calcium unit="mg">45.05</calcium>
+                                        <water unit="g">12.35</water>
+                                        <phe unit="mg">205.38</phe>
+                                    </base_values>
+                                </ingredient>
+                            </ingredients>
+                        </meal>
+                        <meal>
+                            <name>Míchaná vejce</name>
+                            <note>Míchaná vajíčka smažená bez tuku na teflonu</note>
+                            <servings>1</servings>
+                            <ingredients>
+                                <ingredient>
+                                    <name>Vejce slepičí</name>
+                                    <serving>
+                                        <unit_type>pcs</unit_type>
+                                        <amount>5</amount>
+                                        <specification>
+                                            <size_category>M</size_category>
+                                            <estimated_weight unit="g">60</estimated_weight>
+                                        </specification>
+                                    </serving>
+                                    <base_values>
+                                        <energy unit="kj">632.3</energy>
+                                        <protein unit="g">12.38</protein>
+                                        <carbohydrates unit="g">
+                                            <total>0.94</total>
+                                            <sugars>0.34</sugars>
+                                        </carbohydrates>
+                                        <fats unit="g">
+                                            <total>10.87</total>
+                                            <saturated_fats>3.37</saturated_fats>
+                                            <monosaturated_fats>4.3</monosaturated_fats>
+                                            <polysaturated_fats>1.78</polysaturated_fats>
+                                        </fats>
+                                        <cholesterol unit="mg">431</cholesterol>
+                                        <phe unit="mg">619</phe>
+                                    </base_values>
+                                </ingredient>
+                            </ingredients>
+                            
+                        </meal>
+                        <meal>
+                            <name>Číz v meku</name>
+                            <servings>1</servings>
+                            <ingredients>
+                                <ingredient>
+                                    <name>Cheeseburger</name>
+                                    <brand>McDonald's</brand>
+                                    <serving>
+                                        <unit_type>pcs</unit_type>
+                                        <amount>1</amount>
+                                        <specification>
+                                            <estimated_weight unit="g">119</estimated_weight>
+                                        </specification>
+                                    </serving>
+                                    <base_values>
+                                        <energy unit="kj">1257.7</energy>
+                                        <protein unit="g">15.42</protein>
+                                        <carbohydrates unit="g">
+                                            <total>29.66</total>
+                                            <sugars>7.12</sugars>
+                                        </carbohydrates>
+                                        <fats unit="g">
+                                            <total>13.05</total>
+                                            <saturated_fats>5.93</saturated_fats>
+                                            <trans_fats>2.1</trans_fats>
+                                            <monosaturated_fats>3.7</monosaturated_fats>
+                                            <polysaturated_fats>1.32</polysaturated_fats>
+                                        </fats>
+                                        <cholesterol unit="mg">450</cholesterol>
+                                        <fiber unit="g">2.25</fiber>
+                                        <calcium unit="mg">12</calcium>
+                                        <sodium unim="mg">35</sodium>
+                                        <salt unit="g">3</salt>
+                                        <phe unit="mg">619</phe>
+                                    </base_values>
+                                </ingredient>
+                            </ingredients>
+                        </meal>
+                        <meal>
+                            <name>Voda</name>
+                            <servings>1</servings>
+                            <ingredients>
+                                <ingredient>
+                                    <name>Voda</name>
+                                    <serving>
+                                        <unit_type>glass</unit_type>
+                                        <amount>6</amount>
+                                        <specification>
+                                            <estimated_weight unit="ml">220</estimated_weight>
+                                        </specification>
+                                    </serving>
+                                    <base_values>
+                                        <energy unit="kcal">0</energy>
+                                        <water>100</water>
+                                    </base_values>
+                                </ingredient>
+                            </ingredients>
+                        </meal>
+                    </meals>
+                </daily_log>
+            </daily_logs>
+        </user>
+    </users>
+</diet_tracker>
