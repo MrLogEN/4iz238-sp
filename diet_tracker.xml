@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<diet_tracker version="1.0">
+<diet_tracker version="1.0" xmlns="urn:vse:4iz238:sp:diet_tracker"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="urn:vse:4iz238:sp:diet_tracker diet_tracker.xsd">
     <user id="1">
         <name>Jan Novák</name>
         <email>jan.novak@example.cz</email>
         <date_of_birth>2025-12-03</date_of_birth>
         <sex>male</sex>
         <current_state>
+            <!-- unit is necessary as height can be expressed in different units (e.g., cm, m, ft) -->
             <height unit="cm">177</height>
             <weight unit="kg">81</weight>
-            <!--BMI can be calculated -->
+            <!-- unit is necessary as weight can be expressed in different units (e.g., kg, lbs, g) -->
         </current_state>
         <long_term_goals>
             <weight unit="kg">72</weight>
-            <!--BMI can be calculated -->
+            <!-- unit is necessary as weight can be expressed in different units (e.g., kg, lbs, g) -->
         </long_term_goals>
         <daily_logs>
             <daily_log date="2025-11-21">
                 <daily_goal>
+                    <!-- All 'unit' attributes for nutritional values are necessary as their units can vary (e.g., g, mg, kcal, kJ) -->
                     <energy unit="kcal">2100</energy>
                     <water unit="l">2.2</water>
                     <protein unit="g">120</protein>
@@ -25,7 +29,7 @@
                         <sugars>21</sugars>
                     </carbohydrates>
                     <fats unit="g">
-                        <total>40</total>
+                        <total>40</total> <!-- usualy not calculabe, values are usually not complete -->
                         <saturated_fats>5.93</saturated_fats>
                         <trans_fats>2.1</trans_fats>
                         <monosaturated_fats>3.7</monosaturated_fats>
@@ -34,7 +38,7 @@
                     <cholesterol unit="mg">450</cholesterol>
                     <fiber unit="g">2.25</fiber>
                     <calcium unit="mg">12</calcium>
-                    <sodium unim="mg">35</sodium>
+                    <sodium unit="mg">35</sodium>
                     <salt unit="g">8</salt>
                     <phe unit="mg">700</phe>
                 </daily_goal>
@@ -48,9 +52,7 @@
                                 <name>Řecký jogurt bílý 0% tuku</name>
                                 <brand>Milko</brand>
                                 <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%2Fid%2FOIP.fiEfxY1GbSjMAolRTkmJ4gHaGm%3Fpid%3DApi&f=1&ipt=74a317cda62ea5922647e4e78fe8c6204b38a407bc6f0dc4b3a20339e0145674</img>
-                                <serving>
-                                    <amount unit="g">130</amount>
-                                </serving>
+                                <!-- All 'unit' attributes for nutritional values are necessary as their units can vary (e.g., g, mg, kcal, kJ) -->
                                 <base_values>
                                     <energy unit="kcal">80.58</energy>
                                     <protein unit="g">14</protein>
@@ -68,9 +70,7 @@
                             </ingredient>
                             <ingredient id="2">
                                 <name>rohlík bílý</name>
-                                <serving>
-                                    <amount unit="pcs">1</amount>
-                                </serving>
+                                <serving amount="1" unit="pcs"/>
                                 <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.privezemenakup.cz%2Fimages%2FRohl%25C3%25ADk%2520tukov%25C3%25BD%252043g.jpg&f=1&nofb=1&ipt=3f43a00fae5f6614bfcad63767750c23ce2495ba95c080399571a595ae29477d</img>
                                 <base_values>
                                     <energy unit="kcal">130.14</energy>
@@ -99,8 +99,7 @@
                         <ingredients>
                             <ingredient id="3">
                                 <name>Vejce slepičí</name>
-                                <serving>
-                                    <amount unit="pcs">5</amount>
+                                <serving amount="5" unit="pcs">
                                     <specification>
                                         <size_category>M</size_category>
                                         <estimated_weight unit="g">60</estimated_weight>
@@ -133,8 +132,7 @@
                             <ingredient id="4">
                                 <name>Cheeseburger</name>
                                 <brand>McDonald's</brand>
-                                <serving>
-                                    <amount unit="pcs">1</amount>
+                                <serving amount="1" unit="pcs">
                                     <specification>
                                         <estimated_weight unit="g">119</estimated_weight>
                                     </specification>
@@ -148,7 +146,7 @@
                                         <sugars>7.12</sugars>
                                     </carbohydrates>
                                     <fats unit="g">
-                                        <total>13.05</total>
+                                        <!-- total is calculable here, all variants of fats are present -->
                                         <saturated_fats>5.93</saturated_fats>
                                         <trans_fats>2.1</trans_fats>
                                         <monosaturated_fats>3.7</monosaturated_fats>
@@ -157,7 +155,7 @@
                                     <cholesterol unit="mg">450</cholesterol>
                                     <fiber unit="g">2.25</fiber>
                                     <calcium unit="mg">12</calcium>
-                                    <sodium unim="mg">35</sodium>
+                                    <sodium unit="mg">35</sodium>
                                     <salt unit="g">3</salt>
                                     <phe unit="mg">619</phe>
                                 </base_values>
@@ -170,8 +168,7 @@
                         <ingredients>
                             <ingredient id="5">
                                 <name>Voda</name>
-                                <serving>
-                                    <amount unit="glass">6</amount>
+                                <serving amount="6" unit="glass">
                                     <specification>
                                         <estimated_weight unit="ml">220</estimated_weight>
                                     </specification>
