@@ -8,11 +8,11 @@
         <current_state>
             <height unit="cm">177</height>
             <weight unit="kg">81</weight>
-            <bmi>25</bmi>
+            <!--BMI can be calculated -->
         </current_state>
         <long_term_goals>
             <weight unit="kg">72</weight>
-            <bmi>23</bmi>
+            <!--BMI can be calculated -->
         </long_term_goals>
         <daily_logs>
             <daily_log date="2025-11-21">
@@ -47,6 +47,7 @@
                             <ingredient id="1">
                                 <name>Řecký jogurt bílý 0% tuku</name>
                                 <brand>Milko</brand>
+                                <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%2Fid%2FOIP.fiEfxY1GbSjMAolRTkmJ4gHaGm%3Fpid%3DApi&f=1&ipt=74a317cda62ea5922647e4e78fe8c6204b38a407bc6f0dc4b3a20339e0145674</img>
                                 <serving>
                                     <amount unit="g">130</amount>
                                 </serving>
@@ -70,6 +71,7 @@
                                 <serving>
                                     <amount unit="pcs">1</amount>
                                 </serving>
+                                <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.privezemenakup.cz%2Fimages%2FRohl%25C3%25ADk%2520tukov%25C3%25BD%252043g.jpg&f=1&nofb=1&ipt=3f43a00fae5f6614bfcad63767750c23ce2495ba95c080399571a595ae29477d</img>
                                 <base_values>
                                     <energy unit="kcal">130.14</energy>
                                     <protein unit="g">4.11</protein>
@@ -104,6 +106,7 @@
                                         <estimated_weight unit="g">60</estimated_weight>
                                     </specification>
                                 </serving>
+                                <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fid%2F479882154%2Fcs%2Ffotografie%2Fjedno-vejce-izolovan%25C3%25A9-na-b%25C3%25ADl%25C3%25A9m-pozad%25C3%25AD.jpg%3Fs%3D612x612%26w%3D0%26k%3D20%26c%3DrbzSv87YtMz22ZSt74LTkNxCgCCMCNM4P3xsCf3Lrkg%3D&f=1&nofb=1&ipt=93c2890d0d71f8296557020a69451c53f2b475d0e0eb1b55af72be555a4ddfe7</img>
                                 <base_values>
                                     <energy unit="kj">632.3</energy>
                                     <protein unit="g">12.38</protein>
@@ -122,7 +125,6 @@
                                 </base_values>
                             </ingredient>
                         </ingredients>
-
                     </meal>
                     <meal id="3">
                         <name>Číz v meku</name>
@@ -137,6 +139,7 @@
                                         <estimated_weight unit="g">119</estimated_weight>
                                     </specification>
                                 </serving>
+                                <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.mcdonalds.at%2Fwp-content%2Fuploads%2F2023%2F02%2F1500x1500-web-pop-neu-cheeseburger.png&f=1&nofb=1&ipt=4090ecaa0f321a84234ca55a15667a602fac8eba9f6b769dda0d69afb547e004</img>
                                 <base_values>
                                     <energy unit="kj">1257.7</energy>
                                     <protein unit="g">15.42</protein>
@@ -173,6 +176,7 @@
                                         <estimated_weight unit="ml">220</estimated_weight>
                                     </specification>
                                 </serving>
+                                <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fid%2F138285768%2Fcs%2Ffotografie%2Fsklenice-vody-s-bublinkami.jpg%3Fs%3D612x612%26w%3D0%26k%3D20%26c%3D8mgMJx_Cmvkhozq96ZM034VKS-DoCwMWqUTmgfpt6uE%3D&f=1&nofb=1&ipt=2b256d18f3092f51177b008fb6cc9e4dd9a6f6496770f5b587d7ce69fecca61f</img>
                                 <base_values>
                                     <energy unit="kcal">0</energy>
                                     <water>100</water>
