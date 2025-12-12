@@ -46,44 +46,50 @@
                             <ingredient id="1">
                                 <name>Řecký jogurt bílý 0% tuku</name>
                                 <brand>Milko</brand>
-                                <serving amount="1"/>
+                                <serving>
+                                    <count>1</count>
+                                    <weight>130</weight>
+                                </serving>
                                 <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%2Fid%2FOIP.fiEfxY1GbSjMAolRTkmJ4gHaGm%3Fpid%3DApi&amp;f=1&amp;ipt=74a317cda62ea5922647e4e78fe8c6204b38a407bc6f0dc4b3a20339e0145674</img>
-                                <base_values>
-                                    <energy>337146.72</energy>
-                                    <protein>14</protein>
+                                <base_values_per_100g>
+                                    <energy>259343.63</energy>
+                                    <protein>10.77</protein>
                                     <carbohydrates>
-                                        <total>4.9</total>
-                                        <sugars>4.9</sugars>
+                                        <total>3.77</total>
+                                        <sugars>3.77</sugars>
                                     </carbohydrates>
                                     <fats>
-                                        <total>0.42</total>
-                                        <saturated_fats>0.28</saturated_fats>
+                                        <total>0.32</total>
+                                        <saturated_fats>0.22</saturated_fats>
                                     </fats>
-                                    <salt>0.14</salt>
-                                    <phe>0.7</phe>
-                                </base_values>
+                                    <salt>0.11</salt>
+                                    <phe>0.54</phe>
+                                </base_values_per_100g>
                             </ingredient>
                             <ingredient id="2">
                                 <name>rohlík bílý</name>
-                                <serving amount="1"/>
+                                <serving>
+                                    <count>1</count>
+                                    <weight>43</weight>
+                                </serving>
                                 <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.privezemenakup.cz%2Fimages%2FRohl%25C3%25ADk%2520tukov%25C3%25BD%252043g.jpg&amp;f=1&amp;nofb=1&amp;ipt=3f43a00fae5f6614bfcad63767750c23ce2495ba95c080399571a595ae29477d</img>
-                                <base_values>
-                                    <energy>544505.76</energy>
-                                    <protein>4.11</protein>
+                                <base_values_per_100g>
+                                    <energy>1266292.47</energy>
+                                    <protein>9.56</protein>
                                     <carbohydrates>
-                                        <total>24.14</total>
+                                        <total>56.14</total>
                                     </carbohydrates>
                                     <fats>
-                                        <total>1.55</total>
-                                        <saturated_fats>0.5</saturated_fats>
-                                        <monosaturated_fats>0.45</monosaturated_fats>
-                                        <polysaturated_fats>0.45</polysaturated_fats>
+                                        <total>3.60</total>
+                                        <saturated_fats>1.16</saturated_fats>
+                                        <monosaturated_fats>1.05</monosaturated_fats>
+                                        <polysaturated_fats>1.05</polysaturated_fats>
                                     </fats>
-                                    <fiber>1.87</fiber>
-                                    <calcium>0.04505</calcium>
-                                    <water>0.01235</water>
-                                    <phe>0.20538</phe>
-                                </base_values>
+                                    <fiber>4.35</fiber>
+                                    <calcium>0.10</calcium>
+                                    <water>0.03</water>
+                                    <phe>0.48</phe>
+                                </base_values_per_100g>
                             </ingredient>
                         </ingredients>
                     </meal>
@@ -94,29 +100,30 @@
                         <ingredients>
                             <ingredient id="3">
                                 <name>Vejce slepičí</name>
-                                <serving amount="5">
+                                <serving>
+                                    <count>5</count>
+                                    <weight>60</weight>
                                     <specification>
                                         <size_category>M</size_category>
-                                        <estimated_weight>60</estimated_weight>
                                     </specification>
                                 </serving>
                                 <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fid%2F479882154%2Fcs%2Ffotografie%2Fjedno-vejce-izolovan%25C3%25A9-na-b%25C3%25ADl%25C3%25A9m-pozad%25C3%25AD.jpg%3Fs%3D612x612%26w%3D0%26k%3D20%26c%3DrbzSv87YtMz22ZSt74LTkNxCgCCMCNM4P3xsCf3Lrkg%3D&amp;f=1&amp;nofb=1&amp;ipt=93c2890d0d71f8296557020a69451c53f2b475d0e0eb1b55af72be555a4ddfe7</img>
-                                <base_values>
-                                    <energy>632300</energy>
-                                    <protein>12.38</protein>
+                                <base_values_per_100g>
+                                    <energy>1053833.33</energy>
+                                    <protein>20.63</protein>
                                     <carbohydrates>
-                                        <total>0.94</total>
-                                        <sugars>0.34</sugars>
+                                        <total>1.57</total>
+                                        <sugars>0.57</sugars>
                                     </carbohydrates>
                                     <fats>
-                                        <total>10.87</total>
-                                        <saturated_fats>3.37</saturated_fats>
-                                        <monosaturated_fats>4.3</monosaturated_fats>
-                                        <polysaturated_fats>1.78</polysaturated_fats>
+                                        <total>18.12</total>
+                                        <saturated_fats>5.62</saturated_fats>
+                                        <monosaturated_fats>7.17</monosaturated_fats>
+                                        <polysaturated_fats>2.97</polysaturated_fats>
                                     </fats>
-                                    <cholesterol>0.431</cholesterol>
-                                    <phe>0.619</phe>
-                                </base_values>
+                                    <cholesterol>0.72</cholesterol>
+                                    <phe>1.03</phe>
+                                </base_values_per_100g>
                             </ingredient>
                         </ingredients>
                     </meal>
@@ -127,32 +134,32 @@
                             <ingredient id="4">
                                 <name>Cheeseburger</name>
                                 <brand>McDonald's</brand>
-                                <serving amount="1">
-                                    <specification>
-                                        <estimated_weight>119</estimated_weight>
-                                    </specification>
+                                <serving>
+                                    <count>1</count>
+                                    <weight>119</weight>
                                 </serving>
                                 <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.mcdonalds.at%2Fwp-content%2Fuploads%2F2023%2F02%2F1500x1500-web-pop-neu-cheeseburger.png&amp;f=1&amp;nofb=1&amp;ipt=4090ecaa0f321a84234ca55a15667a602fac8eba9f6b769dda0d69afb547e004</img>
-                                <base_values>
-                                    <energy>1257700</energy>
-                                    <protein>15.42</protein>
+                                <base_values_per_100g>
+                                    <energy>1056890.76</energy>
+                                    <protein>12.96</protein>
                                     <carbohydrates>
-                                        <total>29.66</total>
-                                        <sugars>7.12</sugars>
+                                        <total>24.92</total>
+                                        <sugars>5.98</sugars>
                                     </carbohydrates>
                                     <fats>
-                                        <saturated_fats>5.93</saturated_fats>
-                                        <trans_fats>2.1</trans_fats>
-                                        <monosaturated_fats>3.7</monosaturated_fats>
-                                        <polysaturated_fats>1.32</polysaturated_fats>
+                                        <total>10.97</total>
+                                        <saturated_fats>4.98</saturated_fats>
+                                        <trans_fats>1.76</trans_fats>
+                                        <monosaturated_fats>3.11</monosaturated_fats>
+                                        <polysaturated_fats>1.11</polysaturated_fats>
                                     </fats>
-                                    <cholesterol>0.45</cholesterol>
-                                    <fiber>2.25</fiber>
-                                    <calcium>0.012</calcium>
-                                    <sodium>0.035</sodium>
-                                    <salt>3</salt>
-                                    <phe>0.619</phe>
-                                </base_values>
+                                    <cholesterol>0.38</cholesterol>
+                                    <fiber>1.89</fiber>
+                                    <calcium>0.01</calcium>
+                                    <sodium>0.03</sodium>
+                                    <salt>2.52</salt>
+                                    <phe>0.52</phe>
+                                </base_values_per_100g>
                             </ingredient>
                         </ingredients>
                     </meal>
@@ -162,16 +169,15 @@
                         <ingredients>
                             <ingredient id="5">
                                 <name>Voda</name>
-                                <serving amount="6">
-                                    <specification>
-                                        <estimated_weight>0.22</estimated_weight>
-                                    </specification>
+                                <serving>
+                                    <count>6</count>
+                                    <weight>220</weight>
                                 </serving>
                                 <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.istockphoto.com%2Fid%2F138285768%2Fcs%2Ffotografie%2Fsklenice-vody-s-bublinkami.jpg%3Fs%3D612x612%26w%3D0%26k%3D20%26c%3D8mgMJx_Cmvkhozq96ZM034VKS-DoCwMWqUTmgfpt6uE%3D&amp;f=1&amp;nofb=1&amp;ipt=2b256d18f3092f51177b008fb6cc9e4dd9a6f6496770f5b587d7ce69fecca61f</img>
-                                <base_values>
+                                <base_values_per_100g>
                                     <energy>0</energy>
-                                    <water>0.1</water>
-                                </base_values>
+                                    <water>100</water>
+                                </base_values_per_100g>
                             </ingredient>
                         </ingredients>
                     </meal>
