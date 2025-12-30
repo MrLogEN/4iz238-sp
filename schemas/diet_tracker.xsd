@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="urn:vse:4iz238:chav07:sp:diet_tracker"
+           xmlns="urn:vse:4iz238:chav07:sp:diet_tracker"
+           elementFormDefault="qualified">
+
+    <!-- Schema for diet_tracker XML -->
+    <!-- Fill in the schema definitions here -->
+    <xs:element name="diet_tracker" type="diet_tracker_type"/>
+       
+     <!-- Diet tracker type -->
+    <xs:complexType name="diet_tracker_type">
+        <xs:attribute name="version"/>
+        <xs:sequence>
+            <xs:element name="user" type="user_type"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- user type -->
+    <xs:complexType name="user_type">
+        
+        <!-- user ID attribute -->
+        <xs:attribute name="id" type="xs:nonNegativeInteger" use="required"/>
+    </xs:complexType>
+    
+</xs:schema>

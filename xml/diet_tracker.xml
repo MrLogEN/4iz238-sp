@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<diet_tracker version="1.0" xmlns="urn:vse:4iz238:chav07:sp:diet_tracker">
+<diet_tracker
+    version="1.0"
+    xmlns="urn:vse:4iz238:chav07:sp:diet_tracker"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:vse:4iz238:chav07:sp:diet_tracker ../schemas/diet_tracker.xsd">
     <!-- All values used are in standard SI units e.g. m, g, l, J, etc. -->
     <user id="1">
         <name>Jan Novák</name>
