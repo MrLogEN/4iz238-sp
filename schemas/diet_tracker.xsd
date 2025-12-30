@@ -116,7 +116,7 @@
             <xs:element name="energy" type="si_value_type"/>
             <xs:element name="water" type="si_value_type"/>
             <xs:element name="protein" type="si_value_type"/>
-            <xs:element name="carbohydrates"/>
+            <xs:element name="carbohydrates" type="carbohydrates_type"/>
             <xs:element name="fats"/>
             <xs:element name="cholesterol" type="si_value_type"/>
             <xs:element name="fiber" type="si_value_type"/>
@@ -127,5 +127,12 @@
         </xs:sequence>
     </xs:complexType>
     
+    <!-- carbohydrates_type -->
+    <xs:complexType name="carbohydrates_type">
+        <xs:sequence>
+            <xs:element name="total" type="si_value_type"/>
+            <xs:element name="sugars" type="si_value_type"/>
+        </xs:sequence>
+    </xs:complexType>
     
 </xs:schema>
