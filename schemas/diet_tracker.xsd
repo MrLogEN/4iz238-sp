@@ -106,6 +106,7 @@
     <xs:complexType name="daily_log_type">
         <xs:sequence>
             <xs:element name="daily_goal" type="daily_goal_type"/>
+            <xs:element name="meals" type="meals_type"/>
         </xs:sequence>
         <xs:attribute name="date" type="xs:date"/>
     </xs:complexType>
@@ -144,6 +145,11 @@
             <xs:element name="monosaturated_fats" type="si_value_type" minOccurs="0"/>
             <xs:element name="polysaturated_fats" type="si_value_type" minOccurs="0"/>
         </xs:sequence>
+    </xs:complexType>
+    
+    <!-- meals type -->
+    <xs:complexType name="meals_type">
+        
     </xs:complexType>
     
 </xs:schema>
