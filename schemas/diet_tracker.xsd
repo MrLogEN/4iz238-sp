@@ -18,6 +18,18 @@
         
     </xs:complexType>
     
+    <!-- Version type -->
+    <xs:simpleType name="version_type">
+        <xs:annotation>
+            <xs:documentation>
+                The version must be in simplified SemVer major.minor format (i.e. 1.1, 3.2, etc.).
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d+\.\d+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
     <!-- user type -->
     <xs:complexType name="user_type">
         <xs:sequence>
@@ -25,7 +37,8 @@
             <xs:element name="email" type="user_email_type"/>
             <xs:element name="date_of_birth" type="xs:date"/>
             <xs:element name="sex" type="sex_type"/>
-        </xs:sequence>
+            <xs:element name="current_state" type="current_state_type"/>
+        </xs:sequence> 
         <!-- user ID attribute -->
         <xs:attribute name="id" type="xs:nonNegativeInteger" use="required"/>
     </xs:complexType>
@@ -57,15 +70,19 @@
         </xs:restriction>
     </xs:simpleType>
     
-    <!-- Version type -->
-    <xs:simpleType name="version_type">
-        <xs:annotation>
-            <xs:documentation>
-                The version must be in simplified SemVer major.minor format (i.e. 1.1, 3.2, etc.).
-            </xs:documentation>
-        </xs:annotation>
-        <xs:restriction base="xs:string">
-            <xs:pattern value="\d+\.\d+"/>
+    <!-- current state type -->
+    <xs:complexType name="current_state_type">
+        <xs:sequence>
+            <xs:element name="height" type="si_value_type"/>
+            <xs:element name="weight" type="si_value_type"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Universal SI unit value type -->
+    <xs:simpleType name="si_value_type">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
         </xs:restriction>
     </xs:simpleType>
+    
 </xs:schema>
