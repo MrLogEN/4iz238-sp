@@ -136,13 +136,13 @@
     </xs:complexType>
     
     <!-- fats type -->
-    <xs:complexType name="fats">
+    <xs:complexType name="fats_type">
         <xs:sequence>
             <xs:element name="total" type="si_value_type"/>
             <xs:element name="saturated_fats" type="si_value_type"/>
-            <xs:element name="trans_fats" type="si_value_type"/>
-            <xs:element name="monosaturated_fats" type="si_value_type"/>
-            <xs:element name="polysaturated_fats" type="si_value_type"/>
+            <xs:element name="trans_fats" type="si_value_type" minOccurs="0"/>
+            <xs:element name="monosaturated_fats" type="si_value_type" minOccurs="0"/>
+            <xs:element name="polysaturated_fats" type="si_value_type" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
     
