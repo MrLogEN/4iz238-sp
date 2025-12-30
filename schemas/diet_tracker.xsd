@@ -97,8 +97,13 @@
     
     <xs:complexType name="daily_logs_type">
         <xs:sequence>
-            <xs:element name="daily_log" maxOccurs="unbounded" minOccurs="0"/>
+            <xs:element name="daily_log" type="daily_log_type" maxOccurs="unbounded" minOccurs="0"/>
         </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="daily_log_type">
+        
+        <xs:attribute name="date" type="xs:date"/>
     </xs:complexType>
     
 </xs:schema>
