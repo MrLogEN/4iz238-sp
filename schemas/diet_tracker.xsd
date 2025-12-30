@@ -23,6 +23,7 @@
         <xs:sequence>
             <xs:element name="name" type="user_name_type"/>
             <xs:element name="email" type="user_email_type"/>
+            <xs:element name="date_of_birth" type="xs:date"/>
         </xs:sequence>
         <!-- user ID attribute -->
         <xs:attribute name="id" type="xs:nonNegativeInteger" use="required"/>
