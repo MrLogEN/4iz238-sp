@@ -149,6 +149,43 @@
     
     <!-- meals type -->
     <xs:complexType name="meals_type">
+        <xs:sequence>
+            <xs:element name="meal" type="meal_type" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- meal type -->
+    <xs:complexType name="meal_type">
+        <xs:sequence>
+            <xs:element name="name" type="meal_name_type"/>
+            <xs:element name="note" type="xs:string" minOccurs="0"/>
+            <xs:element name="servings" type="serving_type"/>
+            <xs:element name="ingredients" type="ingredients_type"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+    </xs:complexType>
+    
+    <!-- meal name type -->
+    <xs:simpleType name="meal_name_type">
+        <xs:annotation>
+            <xs:documentation>
+                The name of the meal. Must contain at least one non-whitespace character.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value=".*\S.*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- serving type -->
+    <xs:simpleType name="serving_type">
+        <xs:restriction base="xs:decimal">
+            <xs:minExclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- ingredients type -->
+    <xs:complexType name="ingredients_type">
         
     </xs:complexType>
     
