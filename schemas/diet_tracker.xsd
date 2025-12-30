@@ -20,11 +20,34 @@
     
     <!-- user type -->
     <xs:complexType name="user_type">
-        
+        <xs:sequence>
+            <xs:element name="name" type="user_name_type"/>
+            <xs:element name="email" type="user_email_type"/>
+        </xs:sequence>
         <!-- user ID attribute -->
         <xs:attribute name="id" type="xs:nonNegativeInteger" use="required"/>
     </xs:complexType>
     
+    <!-- user name type -->
+    <xs:simpleType name="user_name_type">
+        <xs:annotation>
+            <xs:documentation>
+                The name of the user. Must contain at least one non-whitespace character.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value=".*\S.*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- user email type -->
+    <xs:simpleType name="user_email_type">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Version type -->
     <xs:simpleType name="version_type">
         <xs:annotation>
             <xs:documentation>
