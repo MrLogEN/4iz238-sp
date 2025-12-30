@@ -95,15 +95,37 @@
         </xs:sequence>
     </xs:complexType>
     
+    <!-- daily logs type -->
     <xs:complexType name="daily_logs_type">
         <xs:sequence>
             <xs:element name="daily_log" type="daily_log_type" maxOccurs="unbounded" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
     
+    <!-- daily log type -->
     <xs:complexType name="daily_log_type">
-        
+        <xs:sequence>
+            <xs:element name="daily_goal" type="daily_goal_type"/>
+        </xs:sequence>
         <xs:attribute name="date" type="xs:date"/>
     </xs:complexType>
+    
+    <!-- daily goal type -->
+    <xs:complexType name="daily_goal_type">
+        <xs:sequence>
+            <xs:element name="energy" type="si_value_type"/>
+            <xs:element name="water" type="si_value_type"/>
+            <xs:element name="protein" type="si_value_type"/>
+            <xs:element name="carbohydrates"/>
+            <xs:element name="fats"/>
+            <xs:element name="cholesterol" type="si_value_type"/>
+            <xs:element name="fiber" type="si_value_type"/>
+            <xs:element name="calcium" type="si_value_type"/>
+            <xs:element name="sodium" type="si_value_type"/>
+            <xs:element name="salt" type="si_value_type"/>
+            <xs:element name="phe" type="si_value_type"/>
+        </xs:sequence>
+    </xs:complexType>
+    
     
 </xs:schema>
