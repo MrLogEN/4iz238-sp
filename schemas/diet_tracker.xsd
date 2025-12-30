@@ -39,6 +39,7 @@
             <xs:element name="sex" type="sex_type"/>
             <xs:element name="current_state" type="current_state_type"/>
             <xs:element name="long_term_goals" type="long_term_goals_type"/>
+            <xs:element name="daily_logs" type="daily_logs_type"/>
         </xs:sequence> 
         <!-- user ID attribute -->
         <xs:attribute name="id" type="xs:nonNegativeInteger" use="required"/>
@@ -91,6 +92,12 @@
     <xs:complexType name="long_term_goals_type">
         <xs:sequence>
             <xs:element name="weight" type="si_value_type"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="daily_logs_type">
+        <xs:sequence>
+            <xs:element name="daily_log" maxOccurs="unbounded" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
     
