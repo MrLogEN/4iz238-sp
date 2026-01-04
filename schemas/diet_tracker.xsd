@@ -186,7 +186,9 @@
     
     <!-- ingredients type -->
     <xs:complexType name="ingredients_type">
-        
+        <xs:sequence>
+            <xs:element name="ingredient"/>
+        </xs:sequence>
     </xs:complexType>
     
 </xs:schema>
