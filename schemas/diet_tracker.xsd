@@ -159,7 +159,7 @@
         <xs:sequence>
             <xs:element name="name" type="meal_name_type"/>
             <xs:element name="note" type="xs:string" minOccurs="0"/>
-            <xs:element name="servings" type="serving_type"/>
+            <xs:element name="servings" type="servings_type"/>
             <xs:element name="ingredients" type="ingredients_type"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:nonNegativeInteger"/>
@@ -178,7 +178,7 @@
     </xs:simpleType>
     
     <!-- serving type -->
-    <xs:simpleType name="serving_type">
+    <xs:simpleType name="servings_type">
         <xs:restriction base="xs:decimal">
             <xs:minExclusive value="0"/>
         </xs:restriction>
@@ -187,8 +187,71 @@
     <!-- ingredients type -->
     <xs:complexType name="ingredients_type">
         <xs:sequence>
-            <xs:element name="ingredient"/>
+            <xs:element name="ingredient" type="ingredient_type" maxOccurs="unbounded"/>
         </xs:sequence>
+    </xs:complexType>
+    
+    <!-- ingredient type -->
+    <xs:complexType name="ingredient_type">
+        <xs:sequence>
+            <xs:element name="name" type="ingredient_name_type"/>
+            <xs:element name="brand" type="ingredient_brand_type" minOccurs="0"/>
+            <xs:element name="serving" type="serving_type"/>
+            <xs:element name="img" type="xs:anyURI"/>
+            <!-- TODO type -->
+            <xs:element name="base_values_per_100g"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+    </xs:complexType>
+    
+    <!-- ingredient name type -->
+    <xs:simpleType name="ingredient_name_type">
+        <xs:annotation>
+            <xs:documentation>
+                The name of the ingredient. It must contain at least one non-whitespace character.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value=".*\S.*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- ingredient brand type -->
+    <xs:simpleType name="ingredient_brand_type">
+        <xs:annotation>
+            <xs:documentation>
+                The brand of the ingredient. It must contain at least one non-whitespace character.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value=".*\S.*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- serving type -->
+    <xs:complexType name="serving_type">
+        <xs:annotation>
+            <xs:documentation>
+                Serving describes the amount of an ingredient and more useful details about the serving.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="count" type="si_value_type"/>
+            <xs:element name="weight" type="si_value_type"/>
+            <xs:element name="specification" type="serving_specification_type" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- serving specification type -->
+    <xs:complexType name="serving_specification_type" mixed="true">
+        <xs:annotation>
+            <xs:documentation>
+                Specification of the serving. It's an information to the user that makes it more clear how big is the serving.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="size_category" type="xs:string"/>
+        </xs:all>
     </xs:complexType>
     
 </xs:schema>
