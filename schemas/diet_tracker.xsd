@@ -198,8 +198,7 @@
             <xs:element name="brand" type="ingredient_brand_type" minOccurs="0"/>
             <xs:element name="serving" type="serving_type"/>
             <xs:element name="img" type="xs:anyURI"/>
-            <!-- TODO type -->
-            <xs:element name="base_values_per_100g"/>
+            <xs:element name="base_values_per_100g" type="base_values_per_100g_type"/>
         </xs:sequence>
         <xs:attribute name="id" type="xs:nonNegativeInteger"/>
     </xs:complexType>
@@ -252,6 +251,22 @@
         <xs:all>
             <xs:element name="size_category" type="xs:string"/>
         </xs:all>
+    </xs:complexType>
+    
+    <xs:complexType name="base_values_per_100g_type">
+        <xs:sequence>
+            <xs:element name="energy" type="si_value_type"/>
+            <xs:element name="protein" type="si_value_type" minOccurs="0"/>
+            <xs:element name="carbohydrates" type="carbohydrates_type" minOccurs="0"/>
+            <xs:element name="fats" type="fats_type" minOccurs="0"/>
+            <xs:element name="cholesterol" type="si_value_type" minOccurs="0"/>
+            <xs:element name="fiber" type="si_value_type" minOccurs="0"/>
+            <xs:element name="calcium" type="si_value_type" minOccurs="0"/>
+            <xs:element name="sodium" type="si_value_type" minOccurs="0"/>
+            <xs:element name="salt" type="si_value_type" minOccurs="0"/>
+            <xs:element name="water" type="si_value_type" minOccurs="0"/>
+            <xs:element name="phe" type="si_value_type" minOccurs="0"/>
+        </xs:sequence>
     </xs:complexType>
     
 </xs:schema>
