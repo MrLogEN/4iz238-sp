@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<diet_tracker
-    version="1.0"
-    xmlns="urn:vse:4iz238:chav07:sp:diet_tracker"
+<diet_tracker version="1.0" xmlns="urn:vse:4iz238:chav07:sp:diet_tracker"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="urn:vse:4iz238:chav07:sp:diet_tracker ../schemas/diet_tracker.xsd">
     <!-- All values used are in standard SI units e.g. m, g, l, J, etc. -->
@@ -76,7 +74,7 @@
                                     <count>1</count>
                                     <weight>43</weight>
                                 </serving>
-                                <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg.privezemenakup.cz%2Fimages%2FRohl%25C3%25ADk%2520tukov%25C3%25BD%252043g.jpg&amp;f=1&amp;nofb=1&amp;ipt=3f43a00fae5f6614bfcad63767750c23ce2495ba95c080399571a595ae29477d</img>
+                                <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.albert.cz%2Fmedias%2Fsys_master%2Fh48%2Fh20%2F9036897157150.jpg%3FbuildNumber%3D4540da3fc20f0f00761506c45e08edd452aee49058ae15a27beacf39029bc769&amp;f=1&amp;nofb=1&amp;ipt=dbe7997b3b8c6e709aff98c13bba7f72fea33bac4029a13ce08af1b4267ac267</img>
                                 <base_values_per_100g>
                                     <energy>1266292.47</energy>
                                     <protein>9.56</protein>
