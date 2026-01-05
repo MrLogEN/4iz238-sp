@@ -7,12 +7,12 @@
 - Use simpleType restrictions for enums
 
 ### Naming
-- Elements: PascalCase
-- Types: PascalCaseType
-- Attributes: camelCase
+- Elements: snake_case
+- Types: snake_case
+- Attributes: snake_case
 
 ### Stability
-- Do not remove elements
+- Do not remove elements unless approved
 - New elements must be optional unless approved
 - Version schemas using namespaces, not filenames
 
