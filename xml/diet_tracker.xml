@@ -21,7 +21,7 @@
             <daily_log date="2025-11-21">
                 <daily_goal>
                     <energy>8786400</energy>
-                    <water>2.2</water>
+                    <water>2200</water>
                     <protein>120</protein>
                     <carbohydrates>
                         <total>230</total>
@@ -34,12 +34,12 @@
                         <monosaturated_fats>3.7</monosaturated_fats>
                         <polysaturated_fats>1.32</polysaturated_fats>
                     </fats>
-                    <cholesterol>0.45</cholesterol>
+                    <cholesterol>450</cholesterol>
                     <fiber>2.25</fiber>
-                    <calcium>0.012</calcium>
-                    <sodium>0.035</sodium>
+                    <calcium>12</calcium>
+                    <sodium>35</sodium>
                     <salt>8</salt>
-                    <phe>0.7</phe>
+                    <phe>700</phe>
                 </daily_goal>
                 <meals>
                     <meal id="1">
@@ -67,7 +67,7 @@
                                         <saturated_fats>0.22</saturated_fats>
                                     </fats>
                                     <salt>0.11</salt>
-                                    <phe>0.54</phe>
+                                    <phe>540</phe>
                                 </base_values_per_100g>
                             </ingredient>
                             <ingredient id="2">
@@ -91,9 +91,9 @@
                                         <polysaturated_fats>1.05</polysaturated_fats>
                                     </fats>
                                     <fiber>4.35</fiber>
-                                    <calcium>0.10</calcium>
+                                    <calcium>100</calcium>
                                     <water>0.03</water>
-                                    <phe>0.48</phe>
+                                    <phe>480</phe>
                                 </base_values_per_100g>
                             </ingredient>
                         </ingredients>
@@ -126,8 +126,8 @@
                                         <monosaturated_fats>7.17</monosaturated_fats>
                                         <polysaturated_fats>2.97</polysaturated_fats>
                                     </fats>
-                                    <cholesterol>0.72</cholesterol>
-                                    <phe>1.03</phe>
+                                    <cholesterol>720</cholesterol>
+                                    <phe>1030</phe>
                                 </base_values_per_100g>
                             </ingredient>
                         </ingredients>
@@ -158,12 +158,12 @@
                                         <monosaturated_fats>3.11</monosaturated_fats>
                                         <polysaturated_fats>1.11</polysaturated_fats>
                                     </fats>
-                                    <cholesterol>0.38</cholesterol>
+                                    <cholesterol>380</cholesterol>
                                     <fiber>1.89</fiber>
-                                    <calcium>0.01</calcium>
-                                    <sodium>0.03</sodium>
+                                    <calcium>10</calcium>
+                                    <sodium>30</sodium>
                                     <salt>2.52</salt>
-                                    <phe>0.52</phe>
+                                    <phe>520</phe>
                                 </base_values_per_100g>
                             </ingredient>
                         </ingredients>
