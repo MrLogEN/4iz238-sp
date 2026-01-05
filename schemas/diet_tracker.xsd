@@ -5,12 +5,15 @@
            elementFormDefault="qualified">
 
     <!-- Schema for diet_tracker XML -->
-    <!-- Fill in the schema definitions here -->
     <xs:element name="diet_tracker" type="diet_tracker_type"/>
        
-     <!-- Diet tracker type -->
+    <!-- Diet tracker type -->
     <xs:complexType name="diet_tracker_type">
-        
+        <xs:annotation>
+            <xs:documentation>
+                Root element representing a complete diet tracking system for a single user.
+            </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
             <xs:element name="user" type="user_type"/>
         </xs:sequence>
@@ -26,12 +29,18 @@
             </xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:pattern value="\d+\.\d+"/>
+            <xs:pattern value="\d{1,3}\.\d{1,3}"/>
+            <xs:maxLength value="7"/>
         </xs:restriction>
     </xs:simpleType>
     
     <!-- user type -->
     <xs:complexType name="user_type">
+        <xs:annotation>
+            <xs:documentation>
+                Represents a user of the diet tracking system with personal information, physical state, goals, and daily logs.
+            </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
             <xs:element name="name" type="user_name_type"/>
             <xs:element name="email" type="user_email_type"/>
@@ -54,18 +63,31 @@
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:pattern value=".*\S.*"/>
+            <xs:minLength value="1"/>
+            <xs:maxLength value="200"/>
         </xs:restriction>
     </xs:simpleType>
     
     <!-- user email type -->
     <xs:simpleType name="user_email_type">
+        <xs:annotation>
+            <xs:documentation>
+                User's email address in standard format (e.g., user@example.com).
+            </xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:pattern value="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"/>
+            <xs:maxLength value="254"/>
         </xs:restriction>
     </xs:simpleType>
     
     <!-- sex type -->
     <xs:simpleType name="sex_type">
+        <xs:annotation>
+            <xs:documentation>
+                Biological sex of the user. Valid values are "male" or "female".
+            </xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="male"/>
             <xs:enumeration value="female"/>
@@ -74,29 +96,135 @@
     
     <!-- current state type -->
     <xs:complexType name="current_state_type">
+        <xs:annotation>
+            <xs:documentation>
+                User's current physical state including height and weight measurements.
+            </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
-            <xs:element name="height" type="si_value_type"/>
-            <xs:element name="weight" type="si_value_type"/>
+            <xs:element name="height" type="height_type"/>
+            <xs:element name="weight" type="weight_type"/>
         </xs:sequence>
     </xs:complexType>
     
     
-    <!-- Universal SI unit value type -->
-    <xs:simpleType name="si_value_type">
+    <!-- Height type -->
+    <xs:simpleType name="height_type">
+        <xs:annotation>
+            <xs:documentation>
+                Height in meters (m). Do NOT use unit prefixes. For example, enter 1.75 for 175cm.
+                Reasonable range: 0.2m (premature infant) to 3.0m (tallest human ever recorded was 2.72m).
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0.2"/>
+            <xs:maxInclusive value="3.0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Weight type -->
+    <xs:simpleType name="weight_type">
+        <xs:annotation>
+            <xs:documentation>
+                Weight in grams (g). Do NOT use unit prefixes. For example, enter 75000 for 75kg.
+                Reasonable range: 500g (0.5kg, premature infant) to 800000g (800kg).
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="500"/>
+            <xs:maxInclusive value="800000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Serving weight type -->
+    <xs:simpleType name="serving_weight_type">
+        <xs:annotation>
+            <xs:documentation>
+                Weight of a food serving in grams (g). For example, enter 130 for 130g yogurt.
+                Reasonable range: 0.1g (spice) to 10000g (10kg, large meal prep).
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0.1"/>
+            <xs:maxInclusive value="10000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Energy type -->
+    <xs:simpleType name="energy_type">
+        <xs:annotation>
+            <xs:documentation>
+                Energy in joules (J). Do NOT use unit prefixes. For example, enter 8368000 for 2000kcal.
+                Reasonable range: 0 to 100000000J (approximately 24000kcal, extreme cases like strongman competitors).
+            </xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:decimal">
             <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="100000000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Volume type -->
+    <xs:simpleType name="volume_type">
+        <xs:annotation>
+            <xs:documentation>
+                Volume in milliliters (mL). For example, enter 2000 for 2 liters of water.
+                Reasonable range: 0 to 50000mL (50 liters, extreme hydration scenarios).
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="50000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Mass type -->
+    <xs:simpleType name="mass_type">
+        <xs:annotation>
+            <xs:documentation>
+                Mass in grams (g). Used for macronutrients and other nutritional values.
+                Reasonable range: 0 to 5000g (5kg) to accommodate extreme daily intakes or per-food values.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="5000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Micro mass type -->
+    <xs:simpleType name="micro_mass_type">
+        <xs:annotation>
+            <xs:documentation>
+                Mass in milligrams (mg). Used for micronutrients like calcium, sodium, etc.
+                Reasonable range: 0 to 500000mg (500g) for extreme micronutrient content.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="500000"/>
         </xs:restriction>
     </xs:simpleType>
     
     <!-- Long term goals type -->
     <xs:complexType name="long_term_goals_type">
+        <xs:annotation>
+            <xs:documentation>
+                User's long-term health and fitness goals, such as target weight.
+            </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
-            <xs:element name="weight" type="si_value_type"/>
+            <xs:element name="weight" type="weight_type"/>
         </xs:sequence>
     </xs:complexType>
     
     <!-- daily logs type -->
     <xs:complexType name="daily_logs_type">
+        <xs:annotation>
+            <xs:documentation>
+                Collection of daily log entries tracking diet and nutrition over time.
+            </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
             <xs:element name="daily_log" type="daily_log_type" maxOccurs="unbounded" minOccurs="0"/>
         </xs:sequence>
@@ -104,65 +232,107 @@
     
     <!-- daily log type -->
     <xs:complexType name="daily_log_type">
+        <xs:annotation>
+            <xs:documentation>
+                A single day's log entry containing nutritional goals and meals consumed for that date.
+            </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
             <xs:element name="daily_goal" type="daily_goal_type"/>
             <xs:element name="meals" type="meals_type"/>
         </xs:sequence>
-        <xs:attribute name="date" type="xs:date"/>
+        <xs:attribute name="date" type="xs:date" use="required"/>
     </xs:complexType>
     
     <!-- daily goal type -->
     <xs:complexType name="daily_goal_type">
+        <xs:annotation>
+            <xs:documentation>
+                Target nutritional values for a single day, including energy, macronutrients, and micronutrients.
+            </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
-            <xs:element name="energy" type="si_value_type"/>
-            <xs:element name="water" type="si_value_type"/>
-            <xs:element name="protein" type="si_value_type"/>
+            <xs:element name="energy" type="energy_type"/>
+            <xs:element name="water" type="volume_type"/>
+            <xs:element name="protein" type="mass_type"/>
             <xs:element name="carbohydrates" type="carbohydrates_type"/>
             <xs:element name="fats" type="fats_type"/>
-            <xs:element name="cholesterol" type="si_value_type"/>
-            <xs:element name="fiber" type="si_value_type"/>
-            <xs:element name="calcium" type="si_value_type"/>
-            <xs:element name="sodium" type="si_value_type"/>
-            <xs:element name="salt" type="si_value_type"/>
-            <xs:element name="phe" type="si_value_type"/>
+            <xs:element name="cholesterol" type="micro_mass_type"/>
+            <xs:element name="fiber" type="mass_type"/>
+            <xs:element name="calcium" type="micro_mass_type"/>
+            <xs:element name="sodium" type="micro_mass_type"/>
+            <xs:element name="salt" type="mass_type"/>
+            <xs:element name="phe" type="micro_mass_type"/>
         </xs:sequence>
     </xs:complexType>
     
-    <!-- carbohydrates_type -->
+    <!-- carbohydrates type -->
     <xs:complexType name="carbohydrates_type">
+        <xs:annotation>
+            <xs:documentation>
+                Carbohydrate nutritional information with total carbohydrates and sugar content breakdown.
+            </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
-            <xs:element name="total" type="si_value_type"/>
-            <xs:element name="sugars" type="si_value_type"/>
+            <xs:element name="total" type="mass_type"/>
+            <xs:element name="sugars" type="mass_type"/>
         </xs:sequence>
     </xs:complexType>
     
     <!-- fats type -->
     <xs:complexType name="fats_type">
+        <xs:annotation>
+            <xs:documentation>
+                Fat nutritional information including total fats and optional breakdown by fat types (saturated, trans, mono/polyunsaturated).
+            </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
-            <xs:element name="total" type="si_value_type"/>
-            <xs:element name="saturated_fats" type="si_value_type"/>
-            <xs:element name="trans_fats" type="si_value_type" minOccurs="0"/>
-            <xs:element name="monosaturated_fats" type="si_value_type" minOccurs="0"/>
-            <xs:element name="polysaturated_fats" type="si_value_type" minOccurs="0"/>
+            <xs:element name="total" type="mass_type"/>
+            <xs:element name="saturated_fats" type="mass_type"/>
+            <xs:element name="trans_fats" type="mass_type" minOccurs="0"/>
+            <xs:element name="monosaturated_fats" type="mass_type" minOccurs="0"/>
+            <xs:element name="polysaturated_fats" type="mass_type" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
     
     <!-- meals type -->
     <xs:complexType name="meals_type">
+        <xs:annotation>
+            <xs:documentation>
+                Collection of meals consumed on a particular day.
+            </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
             <xs:element name="meal" type="meal_type" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
     
+    <!-- meal note type -->
+    <xs:simpleType name="meal_note_type">
+        <xs:annotation>
+            <xs:documentation>
+                Optional note or comment about the meal.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="2000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
     <!-- meal type -->
     <xs:complexType name="meal_type">
+        <xs:annotation>
+            <xs:documentation>
+                A single meal entry containing a name, optional note, serving count, and the ingredients consumed.
+            </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
             <xs:element name="name" type="meal_name_type"/>
-            <xs:element name="note" type="xs:string" minOccurs="0"/>
+            <xs:element name="note" type="meal_note_type" minOccurs="0"/>
             <xs:element name="servings" type="servings_type"/>
             <xs:element name="ingredients" type="ingredients_type"/>
         </xs:sequence>
-        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+        <xs:attribute name="id" type="xs:nonNegativeInteger" use="required"/>
     </xs:complexType>
     
     <!-- meal name type -->
@@ -174,18 +344,32 @@
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:pattern value=".*\S.*"/>
+            <xs:minLength value="1"/>
+            <xs:maxLength value="500"/>
         </xs:restriction>
     </xs:simpleType>
     
-    <!-- serving type -->
+    <!-- servings type -->
     <xs:simpleType name="servings_type">
+        <xs:annotation>
+            <xs:documentation>
+                Number of servings of a meal. Must be greater than zero.
+                Maximum: 1000 servings to prevent clearly erroneous values.
+            </xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:decimal">
             <xs:minExclusive value="0"/>
+            <xs:maxInclusive value="1000"/>
         </xs:restriction>
     </xs:simpleType>
     
     <!-- ingredients type -->
     <xs:complexType name="ingredients_type">
+        <xs:annotation>
+            <xs:documentation>
+                Collection of ingredients that make up a meal. At least one ingredient is required.
+            </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
             <xs:element name="ingredient" type="ingredient_type" maxOccurs="unbounded"/>
         </xs:sequence>
@@ -193,6 +377,11 @@
     
     <!-- ingredient type -->
     <xs:complexType name="ingredient_type">
+        <xs:annotation>
+            <xs:documentation>
+                A food ingredient with name, optional brand, serving information, image, and nutritional values per 100g.
+            </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
             <xs:element name="name" type="ingredient_name_type"/>
             <xs:element name="brand" type="ingredient_brand_type" minOccurs="0"/>
@@ -200,7 +389,7 @@
             <xs:element name="img" type="xs:anyURI"/>
             <xs:element name="base_values_per_100g" type="base_values_per_100g_type"/>
         </xs:sequence>
-        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+        <xs:attribute name="id" type="xs:nonNegativeInteger" use="required"/>
     </xs:complexType>
     
     <!-- ingredient name type -->
@@ -212,6 +401,8 @@
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:pattern value=".*\S.*"/>
+            <xs:minLength value="1"/>
+            <xs:maxLength value="300"/>
         </xs:restriction>
     </xs:simpleType>
     
@@ -224,6 +415,8 @@
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:pattern value=".*\S.*"/>
+            <xs:minLength value="1"/>
+            <xs:maxLength value="200"/>
         </xs:restriction>
     </xs:simpleType>
     
@@ -235,11 +428,38 @@
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="count" type="si_value_type"/>
-            <xs:element name="weight" type="si_value_type"/>
+            <xs:element name="count" type="serving_count_type"/>
+            <xs:element name="weight" type="serving_weight_type"/>
             <xs:element name="specification" type="serving_specification_type" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
+    
+    <!-- Serving count type -->
+    <xs:simpleType name="serving_count_type">
+        <xs:annotation>
+            <xs:documentation>
+                A unitless count representing the number of servings. Must be non-negative.
+                Maximum: 10000 to prevent clearly erroneous values.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="10000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- size category type -->
+    <xs:simpleType name="size_category_type">
+        <xs:annotation>
+            <xs:documentation>
+                Category describing the size of a serving (e.g., "small", "medium", "large", "piece", "cup").
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
     
     <!-- serving specification type -->
     <xs:complexType name="serving_specification_type" mixed="true">
@@ -249,23 +469,31 @@
             </xs:documentation>
         </xs:annotation>
         <xs:all>
-            <xs:element name="size_category" type="xs:string"/>
+            <xs:element name="size_category" type="size_category_type"/>
         </xs:all>
     </xs:complexType>
     
+    <!-- base values per 100g type -->
     <xs:complexType name="base_values_per_100g_type">
+        <xs:annotation>
+            <xs:documentation>
+                Nutritional values per 100 grams of an ingredient. Energy is required, all other values are optional.
+                Note: salt and sodium are distinct - salt (NaCl) contains approximately 40% sodium by mass.
+                phe represents phenylalanine, an amino acid important for those with phenylketonuria (PKU).
+            </xs:documentation>
+        </xs:annotation>
         <xs:sequence>
-            <xs:element name="energy" type="si_value_type"/>
-            <xs:element name="protein" type="si_value_type" minOccurs="0"/>
+            <xs:element name="energy" type="energy_type"/>
+            <xs:element name="protein" type="mass_type" minOccurs="0"/>
             <xs:element name="carbohydrates" type="carbohydrates_type" minOccurs="0"/>
             <xs:element name="fats" type="fats_type" minOccurs="0"/>
-            <xs:element name="cholesterol" type="si_value_type" minOccurs="0"/>
-            <xs:element name="fiber" type="si_value_type" minOccurs="0"/>
-            <xs:element name="calcium" type="si_value_type" minOccurs="0"/>
-            <xs:element name="sodium" type="si_value_type" minOccurs="0"/>
-            <xs:element name="salt" type="si_value_type" minOccurs="0"/>
-            <xs:element name="water" type="si_value_type" minOccurs="0"/>
-            <xs:element name="phe" type="si_value_type" minOccurs="0"/>
+            <xs:element name="cholesterol" type="micro_mass_type" minOccurs="0"/>
+            <xs:element name="fiber" type="mass_type" minOccurs="0"/>
+            <xs:element name="calcium" type="micro_mass_type" minOccurs="0"/>
+            <xs:element name="sodium" type="micro_mass_type" minOccurs="0"/>
+            <xs:element name="salt" type="mass_type" minOccurs="0"/>
+            <xs:element name="water" type="mass_type" minOccurs="0"/>
+            <xs:element name="phe" type="micro_mass_type" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
     
