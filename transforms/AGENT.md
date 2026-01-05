@@ -10,6 +10,10 @@
 - No hard-coded XPath indexes
 
 ## Output
+<<<<<<< Updated upstream
 - Preserve whitespace intentionally
 - Output must be valid XML
 
+=======
+- Output XSLT must be valid XML
+>>>>>>> Stashed changes
