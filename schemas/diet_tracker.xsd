@@ -75,14 +75,79 @@
     <!-- current state type -->
     <xs:complexType name="current_state_type">
         <xs:sequence>
-            <xs:element name="height" type="si_value_type"/>
-            <xs:element name="weight" type="si_value_type"/>
+            <xs:element name="height" type="height_type"/>
+            <xs:element name="weight" type="weight_type"/>
         </xs:sequence>
     </xs:complexType>
     
     
-    <!-- Universal SI unit value type -->
-    <xs:simpleType name="si_value_type">
+    <!-- Height type -->
+    <xs:simpleType name="height_type">
+        <xs:annotation>
+            <xs:documentation>
+                Height in meters (m). Do NOT use unit prefixes. For example, enter 1.75 for 175cm.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Weight type -->
+    <xs:simpleType name="weight_type">
+        <xs:annotation>
+            <xs:documentation>
+                Weight in grams (g). Do NOT use unit prefixes. For example, enter 75000 for 75kg.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Energy type -->
+    <xs:simpleType name="energy_type">
+        <xs:annotation>
+            <xs:documentation>
+                Energy in joules (J). Do NOT use unit prefixes. For example, enter 8368000 for 2000kcal.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Volume type -->
+    <xs:simpleType name="volume_type">
+        <xs:annotation>
+            <xs:documentation>
+                Volume in milliliters (mL). For example, enter 2000 for 2 liters of water.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Mass type -->
+    <xs:simpleType name="mass_type">
+        <xs:annotation>
+            <xs:documentation>
+                Mass in grams (g). Used for macronutrients and other nutritional values.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Micro mass type -->
+    <xs:simpleType name="micro_mass_type">
+        <xs:annotation>
+            <xs:documentation>
+                Mass in milligrams (mg). Used for micronutrients like calcium, sodium, etc.
+            </xs:documentation>
+        </xs:annotation>
         <xs:restriction base="xs:decimal">
             <xs:minInclusive value="0"/>
         </xs:restriction>
@@ -91,7 +156,7 @@
     <!-- Long term goals type -->
     <xs:complexType name="long_term_goals_type">
         <xs:sequence>
-            <xs:element name="weight" type="si_value_type"/>
+            <xs:element name="weight" type="weight_type"/>
         </xs:sequence>
     </xs:complexType>
     
@@ -108,42 +173,42 @@
             <xs:element name="daily_goal" type="daily_goal_type"/>
             <xs:element name="meals" type="meals_type"/>
         </xs:sequence>
-        <xs:attribute name="date" type="xs:date"/>
+        <xs:attribute name="date" type="xs:date" use="required"/>
     </xs:complexType>
     
     <!-- daily goal type -->
     <xs:complexType name="daily_goal_type">
         <xs:sequence>
-            <xs:element name="energy" type="si_value_type"/>
-            <xs:element name="water" type="si_value_type"/>
-            <xs:element name="protein" type="si_value_type"/>
+            <xs:element name="energy" type="energy_type"/>
+            <xs:element name="water" type="volume_type"/>
+            <xs:element name="protein" type="mass_type"/>
             <xs:element name="carbohydrates" type="carbohydrates_type"/>
             <xs:element name="fats" type="fats_type"/>
-            <xs:element name="cholesterol" type="si_value_type"/>
-            <xs:element name="fiber" type="si_value_type"/>
-            <xs:element name="calcium" type="si_value_type"/>
-            <xs:element name="sodium" type="si_value_type"/>
-            <xs:element name="salt" type="si_value_type"/>
-            <xs:element name="phe" type="si_value_type"/>
+            <xs:element name="cholesterol" type="micro_mass_type"/>
+            <xs:element name="fiber" type="mass_type"/>
+            <xs:element name="calcium" type="micro_mass_type"/>
+            <xs:element name="sodium" type="micro_mass_type"/>
+            <xs:element name="salt" type="mass_type"/>
+            <xs:element name="phe" type="micro_mass_type"/>
         </xs:sequence>
     </xs:complexType>
     
     <!-- carbohydrates_type -->
     <xs:complexType name="carbohydrates_type">
         <xs:sequence>
-            <xs:element name="total" type="si_value_type"/>
-            <xs:element name="sugars" type="si_value_type"/>
+            <xs:element name="total" type="mass_type"/>
+            <xs:element name="sugars" type="mass_type"/>
         </xs:sequence>
     </xs:complexType>
     
     <!-- fats type -->
     <xs:complexType name="fats_type">
         <xs:sequence>
-            <xs:element name="total" type="si_value_type"/>
-            <xs:element name="saturated_fats" type="si_value_type"/>
-            <xs:element name="trans_fats" type="si_value_type" minOccurs="0"/>
-            <xs:element name="monosaturated_fats" type="si_value_type" minOccurs="0"/>
-            <xs:element name="polysaturated_fats" type="si_value_type" minOccurs="0"/>
+            <xs:element name="total" type="mass_type"/>
+            <xs:element name="saturated_fats" type="mass_type"/>
+            <xs:element name="trans_fats" type="mass_type" minOccurs="0"/>
+            <xs:element name="monosaturated_fats" type="mass_type" minOccurs="0"/>
+            <xs:element name="polysaturated_fats" type="mass_type" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
     
@@ -162,7 +227,7 @@
             <xs:element name="servings" type="servings_type"/>
             <xs:element name="ingredients" type="ingredients_type"/>
         </xs:sequence>
-        <xs:attribute name="id" type="xs:nonNegativeInteger"/>
+        <xs:attribute name="id" type="xs:nonNegativeInteger" use="required"/>
     </xs:complexType>
     
     <!-- meal name type -->
@@ -235,11 +300,23 @@
             </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="count" type="si_value_type"/>
-            <xs:element name="weight" type="si_value_type"/>
+            <xs:element name="count" type="serving_count_type"/>
+            <xs:element name="weight" type="weight_type"/>
             <xs:element name="specification" type="serving_specification_type" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
+    
+    <!-- Serving count type -->
+    <xs:simpleType name="serving_count_type">
+        <xs:annotation>
+            <xs:documentation>
+                A unitless count representing the number of servings. Must be non-negative.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
     
     <!-- serving specification type -->
     <xs:complexType name="serving_specification_type" mixed="true">
@@ -255,17 +332,17 @@
     
     <xs:complexType name="base_values_per_100g_type">
         <xs:sequence>
-            <xs:element name="energy" type="si_value_type"/>
-            <xs:element name="protein" type="si_value_type" minOccurs="0"/>
+            <xs:element name="energy" type="energy_type"/>
+            <xs:element name="protein" type="mass_type" minOccurs="0"/>
             <xs:element name="carbohydrates" type="carbohydrates_type" minOccurs="0"/>
             <xs:element name="fats" type="fats_type" minOccurs="0"/>
-            <xs:element name="cholesterol" type="si_value_type" minOccurs="0"/>
-            <xs:element name="fiber" type="si_value_type" minOccurs="0"/>
-            <xs:element name="calcium" type="si_value_type" minOccurs="0"/>
-            <xs:element name="sodium" type="si_value_type" minOccurs="0"/>
-            <xs:element name="salt" type="si_value_type" minOccurs="0"/>
-            <xs:element name="water" type="si_value_type" minOccurs="0"/>
-            <xs:element name="phe" type="si_value_type" minOccurs="0"/>
+            <xs:element name="cholesterol" type="micro_mass_type" minOccurs="0"/>
+            <xs:element name="fiber" type="mass_type" minOccurs="0"/>
+            <xs:element name="calcium" type="micro_mass_type" minOccurs="0"/>
+            <xs:element name="sodium" type="micro_mass_type" minOccurs="0"/>
+            <xs:element name="salt" type="mass_type" minOccurs="0"/>
+            <xs:element name="water" type="mass_type" minOccurs="0"/>
+            <xs:element name="phe" type="micro_mass_type" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
     
