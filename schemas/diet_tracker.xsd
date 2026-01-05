@@ -136,6 +136,20 @@
         </xs:restriction>
     </xs:simpleType>
     
+    <!-- Serving weight type -->
+    <xs:simpleType name="serving_weight_type">
+        <xs:annotation>
+            <xs:documentation>
+                Weight of a food serving in grams (g). For example, enter 130 for 130g yogurt.
+                Reasonable range: 0.1g (spice) to 10000g (10kg, large meal prep).
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0.1"/>
+            <xs:maxInclusive value="10000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
     <!-- Energy type -->
     <xs:simpleType name="energy_type">
         <xs:annotation>
@@ -415,7 +429,7 @@
         </xs:annotation>
         <xs:sequence>
             <xs:element name="count" type="serving_count_type"/>
-            <xs:element name="weight" type="weight_type"/>
+            <xs:element name="weight" type="serving_weight_type"/>
             <xs:element name="specification" type="serving_specification_type" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
