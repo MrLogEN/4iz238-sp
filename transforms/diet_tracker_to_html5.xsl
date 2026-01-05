@@ -132,7 +132,12 @@
                     </p>
                 </div>
                 <div class="profile-card">
-                    <div class="icon">⚧</div>
+                    <div class="icon">
+                        <xsl:choose>
+                            <xsl:when test="dt:sex = 'male'">♂️</xsl:when>
+                            <xsl:when test="dt:sex = 'female'">♀️</xsl:when>
+                        </xsl:choose>
+                    </div>
                     <h3>Pohlaví</h3>
                     <p>
                         <xsl:choose>
