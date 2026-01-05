@@ -186,6 +186,371 @@
                     </meal>
                 </meals>
             </daily_log>
+            <daily_log date="2025-11-22">
+                <daily_goal>
+                    <energy>8786400</energy>
+                    <water>2500</water>
+                    <protein>130</protein>
+                    <carbohydrates>
+                        <total>250</total>
+                        <sugars>25</sugars>
+                    </carbohydrates>
+                    <fats>
+                        <total>45</total>
+                        <saturated_fats>6</saturated_fats>
+                        <trans_fats>2</trans_fats>
+                        <monosaturated_fats>4</monosaturated_fats>
+                        <polysaturated_fats>1.5</polysaturated_fats>
+                    </fats>
+                    <cholesterol>500</cholesterol>
+                    <fiber>3</fiber>
+                    <calcium>15</calcium>
+                    <sodium>40</sodium>
+                    <salt>9</salt>
+                    <phe>750</phe>
+                </daily_goal>
+                <meals>
+                    <meal id="5">
+                        <name>Ovesná kaše s banánem</name>
+                        <note>Sladká snídaně s ovocem</note>
+                        <servings>1</servings>
+                        <ingredients>
+                            <ingredient id="6">
+                                <name>Ovesné vločky</name>
+                                <brand>Emco</brand>
+                                <serving>
+                                    <count>1</count>
+                                    <weight>60</weight>
+                                </serving>
+                                <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.LKXMJQy_ZhYLvBw8FJN5CwHaHa%26pid%3DApi&amp;f=1&amp;ipt=abc123</img>
+                                <base_values_per_100g>
+                                    <energy>1506280</energy>
+                                    <protein>13.5</protein>
+                                    <carbohydrates>
+                                        <total>58.7</total>
+                                        <sugars>0.7</sugars>
+                                    </carbohydrates>
+                                    <fats>
+                                        <total>7.0</total>
+                                        <saturated_fats>1.3</saturated_fats>
+                                        <monosaturated_fats>2.4</monosaturated_fats>
+                                        <polysaturated_fats>2.7</polysaturated_fats>
+                                    </fats>
+                                    <fiber>10</fiber>
+                                    <calcium>54</calcium>
+                                    <phe>650</phe>
+                                </base_values_per_100g>
+                            </ingredient>
+                            <ingredient id="7">
+                                <name>Banán</name>
+                                <serving>
+                                    <count>1</count>
+                                    <weight>118</weight>
+                                </serving>
+                                <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.xyz789%26pid%3DApi&amp;f=1&amp;ipt=xyz789</img>
+                                <base_values_per_100g>
+                                    <energy>371544</energy>
+                                    <protein>1.09</protein>
+                                    <carbohydrates>
+                                        <total>22.84</total>
+                                        <sugars>12.23</sugars>
+                                    </carbohydrates>
+                                    <fats>
+                                        <total>0.33</total>
+                                        <saturated_fats>0.11</saturated_fats>
+                                    </fats>
+                                    <fiber>2.6</fiber>
+                                    <calcium>5</calcium>
+                                    <water>74.91</water>
+                                    <phe>58</phe>
+                                </base_values_per_100g>
+                            </ingredient>
+                            <ingredient id="8">
+                                <name>Mléko polotučné</name>
+                                <brand>Hollandia</brand>
+                                <serving>
+                                    <count>1</count>
+                                    <weight>200</weight>
+                                </serving>
+                                <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.milk456%26pid%3DApi&amp;f=1&amp;ipt=milk456</img>
+                                <base_values_per_100g>
+                                    <energy>197904</energy>
+                                    <protein>3.3</protein>
+                                    <carbohydrates>
+                                        <total>4.8</total>
+                                        <sugars>4.8</sugars>
+                                    </carbohydrates>
+                                    <fats>
+                                        <total>1.5</total>
+                                        <saturated_fats>1.0</saturated_fats>
+                                    </fats>
+                                    <cholesterol>5</cholesterol>
+                                    <calcium>120</calcium>
+                                    <sodium>43</sodium>
+                                    <water>89</water>
+                                    <phe>163</phe>
+                                </base_values_per_100g>
+                            </ingredient>
+                        </ingredients>
+                    </meal>
+                    <meal id="6">
+                        <name>Kuřecí prsa s rýží</name>
+                        <note>Oběd s lehkýmmasem</note>
+                        <servings>1</servings>
+                        <ingredients>
+                            <ingredient id="9">
+                                <name>Kuřecí prsa</name>
+                                <serving>
+                                    <count>1</count>
+                                    <weight>150</weight>
+                                </serving>
+                                <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.chicken789%26pid%3DApi&amp;f=1&amp;ipt=chicken789</img>
+                                <base_values_per_100g>
+                                    <energy>687616</energy>
+                                    <protein>31</protein>
+                                    <carbohydrates>
+                                        <total>0</total>
+                                        <sugars>0</sugars>
+                                    </carbohydrates>
+                                    <fats>
+                                        <total>3.6</total>
+                                        <saturated_fats>1.0</saturated_fats>
+                                        <monosaturated_fats>1.2</monosaturated_fats>
+                                        <polysaturated_fats>0.8</polysaturated_fats>
+                                    </fats>
+                                    <cholesterol>85</cholesterol>
+                                    <sodium>74</sodium>
+                                    <water>65</water>
+                                    <phe>1120</phe>
+                                </base_values_per_100g>
+                            </ingredient>
+                            <ingredient id="10">
+                                <name>Rýže bílá vařená</name>
+                                <serving>
+                                    <count>1</count>
+                                    <weight>180</weight>
+                                </serving>
+                                <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.rice123%26pid%3DApi&amp;f=1&amp;ipt=rice123</img>
+                                <base_values_per_100g>
+                                    <energy>544768</energy>
+                                    <protein>2.7</protein>
+                                    <carbohydrates>
+                                        <total>28.2</total>
+                                        <sugars>0.1</sugars>
+                                    </carbohydrates>
+                                    <fats>
+                                        <total>0.3</total>
+                                        <saturated_fats>0.1</saturated_fats>
+                                    </fats>
+                                    <fiber>0.4</fiber>
+                                    <calcium>3</calcium>
+                                    <water>68.4</water>
+                                    <phe>127</phe>
+                                </base_values_per_100g>
+                            </ingredient>
+                        </ingredients>
+                    </meal>
+                    <meal id="7">
+                        <name>Salát Caesar</name>
+                        <servings>1</servings>
+                        <ingredients>
+                            <ingredient id="11">
+                                <name>Ledový salát</name>
+                                <serving>
+                                    <count>1</count>
+                                    <weight>100</weight>
+                                </serving>
+                                <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.lettuce456%26pid%3DApi&amp;f=1&amp;ipt=lettuce456</img>
+                                <base_values_per_100g>
+                                    <energy>58576</energy>
+                                    <protein>0.9</protein>
+                                    <carbohydrates>
+                                        <total>2.97</total>
+                                        <sugars>1.97</sugars>
+                                    </carbohydrates>
+                                    <fats>
+                                        <total>0.14</total>
+                                        <saturated_fats>0.02</saturated_fats>
+                                    </fats>
+                                    <fiber>1.2</fiber>
+                                    <calcium>18</calcium>
+                                    <water>95.64</water>
+                                    <phe>41</phe>
+                                </base_values_per_100g>
+                            </ingredient>
+                        </ingredients>
+                    </meal>
+                </meals>
+            </daily_log>
+            <daily_log date="2025-11-23">
+                <daily_goal>
+                    <energy>9204000</energy>
+                    <water>2800</water>
+                    <protein>140</protein>
+                    <carbohydrates>
+                        <total>270</total>
+                        <sugars>30</sugars>
+                    </carbohydrates>
+                    <fats>
+                        <total>50</total>
+                        <saturated_fats>7</saturated_fats>
+                        <trans_fats>2.5</trans_fats>
+                        <monosaturated_fats>4.5</monosaturated_fats>
+                        <polysaturated_fats>2</polysaturated_fats>
+                    </fats>
+                    <cholesterol>550</cholesterol>
+                    <fiber>3.5</fiber>
+                    <calcium>18</calcium>
+                    <sodium>45</sodium>
+                    <salt>10</salt>
+                    <phe>800</phe>
+                </daily_goal>
+                <meals>
+                    <meal id="8">
+                        <name>Tvarohový dezert</name>
+                        <note>Zdravá svačina</note>
+                        <servings>1</servings>
+                        <ingredients>
+                            <ingredient id="12">
+                                <name>Tvaroh měkký</name>
+                                <brand>Madeta</brand>
+                                <serving>
+                                    <count>1</count>
+                                    <weight>150</weight>
+                                </serving>
+                                <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.cottage789%26pid%3DApi&amp;f=1&amp;ipt=cottage789</img>
+                                <base_values_per_100g>
+                                    <energy>407940</energy>
+                                    <protein>12</protein>
+                                    <carbohydrates>
+                                        <total>3.5</total>
+                                        <sugars>3.5</sugars>
+                                    </carbohydrates>
+                                    <fats>
+                                        <total>4.5</total>
+                                        <saturated_fats>2.8</saturated_fats>
+                                    </fats>
+                                    <cholesterol>15</cholesterol>
+                                    <calcium>90</calcium>
+                                    <sodium>30</sodium>
+                                    <phe>540</phe>
+                                </base_values_per_100g>
+                            </ingredient>
+                            <ingredient id="13">
+                                <name>Med</name>
+                                <serving>
+                                    <count>1</count>
+                                    <weight>20</weight>
+                                </serving>
+                                <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.honey321%26pid%3DApi&amp;f=1&amp;ipt=honey321</img>
+                                <base_values_per_100g>
+                                    <energy>1340032</energy>
+                                    <protein>0.3</protein>
+                                    <carbohydrates>
+                                        <total>82.4</total>
+                                        <sugars>82.1</sugars>
+                                    </carbohydrates>
+                                    <fats>
+                                        <total>0</total>
+                                        <saturated_fats>0</saturated_fats>
+                                    </fats>
+                                    <calcium>6</calcium>
+                                    <water>17.1</water>
+                                    <phe>14</phe>
+                                </base_values_per_100g>
+                            </ingredient>
+                        </ingredients>
+                    </meal>
+                    <meal id="9">
+                        <name>Losos s brokolicí</name>
+                        <note>Večeře plná omega-3</note>
+                        <servings>1</servings>
+                        <ingredients>
+                            <ingredient id="14">
+                                <name>Losos</name>
+                                <serving>
+                                    <count>1</count>
+                                    <weight>140</weight>
+                                </serving>
+                                <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.salmon654%26pid%3DApi&amp;f=1&amp;ipt=salmon654</img>
+                                <base_values_per_100g>
+                                    <energy>865864</energy>
+                                    <protein>20.4</protein>
+                                    <carbohydrates>
+                                        <total>0</total>
+                                        <sugars>0</sugars>
+                                    </carbohydrates>
+                                    <fats>
+                                        <total>13.4</total>
+                                        <saturated_fats>3.1</saturated_fats>
+                                        <monosaturated_fats>4.5</monosaturated_fats>
+                                        <polysaturated_fats>4.2</polysaturated_fats>
+                                    </fats>
+                                    <cholesterol>55</cholesterol>
+                                    <sodium>59</sodium>
+                                    <water>64.9</water>
+                                    <phe>894</phe>
+                                </base_values_per_100g>
+                            </ingredient>
+                            <ingredient id="15">
+                                <name>Brokolice vařená</name>
+                                <serving>
+                                    <count>1</count>
+                                    <weight>150</weight>
+                                </serving>
+                                <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.broccoli987%26pid%3DApi&amp;f=1&amp;ipt=broccoli987</img>
+                                <base_values_per_100g>
+                                    <energy>146440</energy>
+                                    <protein>2.4</protein>
+                                    <carbohydrates>
+                                        <total>7.2</total>
+                                        <sugars>1.4</sugars>
+                                    </carbohydrates>
+                                    <fats>
+                                        <total>0.4</total>
+                                        <saturated_fats>0.1</saturated_fats>
+                                    </fats>
+                                    <fiber>3.3</fiber>
+                                    <calcium>40</calcium>
+                                    <sodium>27</sodium>
+                                    <water>89.3</water>
+                                    <phe>101</phe>
+                                </base_values_per_100g>
+                            </ingredient>
+                        </ingredients>
+                    </meal>
+                    <meal id="10">
+                        <name>Smoothie</name>
+                        <servings>1</servings>
+                        <ingredients>
+                            <ingredient id="16">
+                                <name>Jahody</name>
+                                <serving>
+                                    <count>10</count>
+                                    <weight>12</weight>
+                                </serving>
+                                <img>https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.strawberry147%26pid%3DApi&amp;f=1&amp;ipt=strawberry147</img>
+                                <base_values_per_100g>
+                                    <energy>133888</energy>
+                                    <protein>0.67</protein>
+                                    <carbohydrates>
+                                        <total>7.68</total>
+                                        <sugars>4.89</sugars>
+                                    </carbohydrates>
+                                    <fats>
+                                        <total>0.3</total>
+                                        <saturated_fats>0.02</saturated_fats>
+                                    </fats>
+                                    <fiber>2</fiber>
+                                    <calcium>16</calcium>
+                                    <water>90.95</water>
+                                    <phe>28</phe>
+                                </base_values_per_100g>
+                            </ingredient>
+                        </ingredients>
+                    </meal>
+                </meals>
+            </daily_log>
         </daily_logs>
     </user>
 </diet_tracker>
