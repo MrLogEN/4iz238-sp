@@ -2,7 +2,12 @@
 <diet_tracker version="1.0" xmlns="urn:vse:4iz238:chav07:sp:diet_tracker"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="urn:vse:4iz238:chav07:sp:diet_tracker ../schemas/diet_tracker.xsd">
-    <!-- All values used are in standard SI units e.g. m, g, l, J, etc. -->
+    <!-- All values use SI base units or their standard prefixes: -->
+    <!-- Mass: grams (g) or milligrams (mg) -->
+    <!-- Volume: milliliters (ml) - for water goals -->
+    <!-- Energy: joules (J) -->
+    <!-- Length: meters (m) -->
+    <!-- Note: Water content in ingredients is in grams (g), which equals milliliters (ml) for water -->
     <user id="1">
         <name>Jan Novák</name>
         <email>jan.novak@example.cz</email>
