@@ -479,6 +479,7 @@
             <xs:documentation>
                 Nutritional values per 100 grams of an ingredient. Energy is required, all other values are optional.
                 Note: salt and sodium are distinct - salt (NaCl) contains approximately 40% sodium by mass.
+                Note: water content is measured in grams (g), since 1ml of water ≈ 1g.
                 phe represents phenylalanine, an amino acid important for those with phenylketonuria (PKU).
             </xs:documentation>
         </xs:annotation>
