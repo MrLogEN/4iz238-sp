@@ -206,37 +206,14 @@
 
     <!-- Daily goal template -->
     <xsl:template match="dt:daily_goal" mode="index">
-        <!-- Calculate totals from all meals -->
-        <xsl:variable name="total-energy">
-            <xsl:call-template name="sum-energy">
-                <xsl:with-param name="meals" select="../dt:meals/dt:meal"/>
-            </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="total-water">
-            <xsl:call-template name="sum-water">
-                <xsl:with-param name="meals" select="../dt:meals/dt:meal"/>
-            </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="total-protein">
-            <xsl:call-template name="sum-protein">
-                <xsl:with-param name="meals" select="../dt:meals/dt:meal"/>
-            </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="total-carbs">
-            <xsl:call-template name="sum-carbs">
-                <xsl:with-param name="meals" select="../dt:meals/dt:meal"/>
-            </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="total-fats">
-            <xsl:call-template name="sum-fats">
-                <xsl:with-param name="meals" select="../dt:meals/dt:meal"/>
-            </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="total-fiber">
-            <xsl:call-template name="sum-fiber">
-                <xsl:with-param name="meals" select="../dt:meals/dt:meal"/>
-            </xsl:call-template>
-        </xsl:variable>
+        <!-- Calculate totals from all meals in a single pass -->
+        <xsl:variable name="all-ingredients" select="../dt:meals/dt:meal/dt:ingredients/dt:ingredient"/>
+        <xsl:variable name="total-energy" select="sum(for $i in $all-ingredients return $i/dt:base_values_per_100g/dt:energy * $i/dt:serving/dt:count * $i/dt:serving/dt:weight div 100)"/>
+        <xsl:variable name="total-water" select="sum(for $i in $all-ingredients return $i/dt:base_values_per_100g/dt:water * $i/dt:serving/dt:count * $i/dt:serving/dt:weight div 100)"/>
+        <xsl:variable name="total-protein" select="sum(for $i in $all-ingredients return $i/dt:base_values_per_100g/dt:protein * $i/dt:serving/dt:count * $i/dt:serving/dt:weight div 100)"/>
+        <xsl:variable name="total-carbs" select="sum(for $i in $all-ingredients return $i/dt:base_values_per_100g/dt:carbohydrates/dt:total * $i/dt:serving/dt:count * $i/dt:serving/dt:weight div 100)"/>
+        <xsl:variable name="total-fats" select="sum(for $i in $all-ingredients return $i/dt:base_values_per_100g/dt:fats/dt:total * $i/dt:serving/dt:count * $i/dt:serving/dt:weight div 100)"/>
+        <xsl:variable name="total-fiber" select="sum(for $i in $all-ingredients return $i/dt:base_values_per_100g/dt:fiber * $i/dt:serving/dt:count * $i/dt:serving/dt:weight div 100)"/>
 
         <div class="daily-goals">
             <h4>Denní cíle a plnění</h4>
@@ -348,49 +325,6 @@
                 </div>
             </div>
         </div>
-    </xsl:template>
-
-    <!-- Helper templates to sum nutrients from meals -->
-    <xsl:template name="sum-energy">
-        <xsl:param name="meals"/>
-        <xsl:value-of
-            select="sum($meals/dt:ingredients/dt:ingredient/(dt:base_values_per_100g/dt:energy * dt:serving/dt:count * dt:serving/dt:weight div 100))"
-        />
-    </xsl:template>
-
-    <xsl:template name="sum-water">
-        <xsl:param name="meals"/>
-        <xsl:value-of
-            select="sum($meals/dt:ingredients/dt:ingredient/(dt:base_values_per_100g/dt:water * dt:serving/dt:count * dt:serving/dt:weight div 100))"
-        />
-    </xsl:template>
-
-    <xsl:template name="sum-protein">
-        <xsl:param name="meals"/>
-        <xsl:value-of
-            select="sum($meals/dt:ingredients/dt:ingredient/(dt:base_values_per_100g/dt:protein * dt:serving/dt:count * dt:serving/dt:weight div 100))"
-        />
-    </xsl:template>
-
-    <xsl:template name="sum-carbs">
-        <xsl:param name="meals"/>
-        <xsl:value-of
-            select="sum($meals/dt:ingredients/dt:ingredient/(dt:base_values_per_100g/dt:carbohydrates/dt:total * dt:serving/dt:count * dt:serving/dt:weight div 100))"
-        />
-    </xsl:template>
-
-    <xsl:template name="sum-fats">
-        <xsl:param name="meals"/>
-        <xsl:value-of
-            select="sum($meals/dt:ingredients/dt:ingredient/(dt:base_values_per_100g/dt:fats/dt:total * dt:serving/dt:count * dt:serving/dt:weight div 100))"
-        />
-    </xsl:template>
-
-    <xsl:template name="sum-fiber">
-        <xsl:param name="meals"/>
-        <xsl:value-of
-            select="sum($meals/dt:ingredients/dt:ingredient/(dt:base_values_per_100g/dt:fiber * dt:serving/dt:count * dt:serving/dt:weight div 100))"
-        />
     </xsl:template>
 
     <!-- Meals template -->
