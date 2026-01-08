@@ -98,11 +98,6 @@
                     </fo:basic-link>
                 </fo:block>
             </xsl:for-each>
-            <fo:block space-after="2mm">
-                <fo:basic-link internal-destination="ingredients-overview" color="#3498db">
-                    <fo:inline text-decoration="underline">4. Přehled ingrediencí</fo:inline>
-                </fo:basic-link>
-            </fo:block>
         </fo:block>
 
         <!-- User profile section -->
@@ -214,9 +209,6 @@
 
         <!-- Daily logs -->
         <xsl:apply-templates select="dt:daily_logs"/>
-
-        <!-- Ingredients overview -->
-        <xsl:call-template name="ingredients-overview"/>
     </xsl:template>
 
     <!-- Daily logs template -->
@@ -414,346 +406,107 @@
 
     <!-- Meal template -->
     <xsl:template match="dt:meal">
-        <fo:block font-size="12pt" font-weight="bold" space-before="3mm" 
-            space-after="2mm" color="#2c3e50">
+        <fo:block font-size="12pt" font-weight="bold" space-before="5mm" 
+            space-after="3mm" color="#2c3e50" border-top="2pt solid #3498db" padding-top="3mm">
             <xsl:value-of select="dt:name"/>
             (Porce: <xsl:value-of select="dt:servings"/>×)
         </fo:block>
 
         <xsl:if test="dt:note">
-            <fo:block space-after="2mm" font-style="italic" color="#7f8c8d">
+            <fo:block space-after="3mm" font-style="italic" color="#7f8c8d">
                 Poznámka: <xsl:value-of select="dt:note"/>
             </fo:block>
         </xsl:if>
 
-        <!-- Ingredients list -->
-        <fo:block font-weight="bold" space-after="2mm">
-            Ingredience:
-        </fo:block>
-
+        <!-- Display ingredients with full details -->
         <xsl:for-each select="dt:ingredients/dt:ingredient">
-            <fo:block space-after="1mm" start-indent="5mm">
-                • <fo:basic-link internal-destination="ingredient-{generate-id(.)}" color="#3498db">
-                    <fo:inline text-decoration="underline">
-                        <xsl:value-of select="dt:name"/>
-                    </fo:inline>
-                </fo:basic-link>
-                <xsl:if test="dt:brand"> (<xsl:value-of select="dt:brand"/>)</xsl:if>
-                - <xsl:value-of select="dt:serving/dt:count"/> × <xsl:value-of select="dt:serving/dt:weight"/> g
-            </fo:block>
-        </xsl:for-each>
-
-        <fo:block space-after="3mm"/>
-    </xsl:template>
-
-    <!-- Ingredients overview template -->
-    <xsl:template name="ingredients-overview">
-        <fo:block break-before="page" font-size="18pt" font-weight="bold" 
-            space-before="10mm" space-after="5mm" color="#2c3e50" id="ingredients-overview">
-            4. Přehled ingrediencí
-        </fo:block>
-
-        <xsl:for-each select="//dt:ingredient">
-            <xsl:apply-templates select="." mode="detail"/>
+            <xsl:apply-templates select="." mode="inline"/>
         </xsl:for-each>
     </xsl:template>
 
-    <!-- Ingredient detail template -->
-    <xsl:template match="dt:ingredient" mode="detail">
-        <fo:block break-before="page" id="ingredient-{generate-id(.)}">
-            <fo:block font-size="16pt" font-weight="bold" space-after="3mm" color="#2c3e50">
+    <!-- Ingredient inline template - shows within meal -->
+    <xsl:template match="dt:ingredient" mode="inline">
+        <fo:block space-before="3mm" space-after="5mm" 
+            background-color="#f8f9fa" padding="3mm" border="1pt solid #dee2e6">
+            
+            <!-- Ingredient name and brand -->
+            <fo:block font-size="11pt" font-weight="bold" space-after="2mm" color="#2c3e50">
                 <xsl:value-of select="dt:name"/>
+                <xsl:if test="dt:brand"> (<xsl:value-of select="dt:brand"/>)</xsl:if>
             </fo:block>
 
-            <xsl:if test="dt:brand">
-                <fo:block font-size="12pt" space-after="3mm" color="#7f8c8d">
-                    Značka: <xsl:value-of select="dt:brand"/>
-                </fo:block>
-            </xsl:if>
+            <!-- Serving info -->
+            <fo:block font-size="9pt" space-after="2mm" color="#6c757d">
+                Porce: <xsl:value-of select="dt:serving/dt:count"/> × <xsl:value-of select="dt:serving/dt:weight"/> g
+                <xsl:if test="dt:serving/dt:specification/dt:size_category">
+                    (<xsl:value-of select="dt:serving/dt:specification/dt:size_category"/>)
+                </xsl:if>
+            </fo:block>
 
-            <!-- Image - use local images from XML -->
+            <!-- Image - smaller size for inline display -->
             <xsl:if test="dt:img">
-                <fo:block text-align="center" space-after="5mm">
+                <fo:block text-align="center" space-after="3mm">
                     <fo:external-graphic src="url('{dt:img}')" 
                         content-width="scale-to-fit" 
                         content-height="scale-to-fit"
-                        width="100mm" 
-                        height="100mm"
+                        width="50mm" 
+                        height="50mm"
                         scaling="uniform"/>
                 </fo:block>
             </xsl:if>
 
-            <!-- Serving information -->
-            <fo:block font-size="14pt" font-weight="bold" space-before="3mm" 
-                space-after="2mm" color="#34495e">
-                Informace o porci
+            <!-- Nutritional values for this serving -->
+            <xsl:variable name="total-weight" select="dt:serving/dt:count * dt:serving/dt:weight"/>
+            <xsl:variable name="multiplier" select="$total-weight div 100"/>
+
+            <fo:block font-size="10pt" font-weight="bold" space-after="2mm" color="#34495e">
+                Nutriční hodnoty (celková porce)
             </fo:block>
 
-            <fo:table table-layout="fixed" width="100%" space-after="5mm" 
-                border="1pt solid #bdc3c7">
+            <fo:table table-layout="fixed" width="100%" font-size="9pt" 
+                border="1pt solid #dee2e6">
                 <fo:table-column column-width="50%"/>
                 <fo:table-column column-width="50%"/>
                 <fo:table-body>
-                    <fo:table-row background-color="#ecf0f1">
-                        <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                            <fo:block font-weight="bold">Počet porcí</fo:block>
+                    <fo:table-row background-color="#e9ecef">
+                        <fo:table-cell padding="2mm" border-bottom="1pt solid #dee2e6">
+                            <fo:block>Energie</fo:block>
                         </fo:table-cell>
-                        <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                            <fo:block><xsl:value-of select="dt:serving/dt:count"/>×</fo:block>
+                        <fo:table-cell padding="2mm" border-bottom="1pt solid #dee2e6">
+                            <fo:block><xsl:value-of select="format-number(dt:base_values_per_100g/dt:energy * $multiplier div 4184, '#,##0')"/> kcal</fo:block>
                         </fo:table-cell>
                     </fo:table-row>
                     <fo:table-row>
-                        <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                            <fo:block font-weight="bold">Hmotnost jedné porce</fo:block>
+                        <fo:table-cell padding="2mm" border-bottom="1pt solid #dee2e6">
+                            <fo:block>Bílkoviny</fo:block>
                         </fo:table-cell>
-                        <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                            <fo:block><xsl:value-of select="dt:serving/dt:weight"/> g</fo:block>
+                        <fo:table-cell padding="2mm" border-bottom="1pt solid #dee2e6">
+                            <fo:block><xsl:value-of select="format-number(dt:base_values_per_100g/dt:protein * $multiplier, '#,##0.0')"/> g</fo:block>
                         </fo:table-cell>
                     </fo:table-row>
-                    <xsl:if test="dt:serving/dt:specification/dt:size_category">
-                        <fo:table-row background-color="#ecf0f1">
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block font-weight="bold">Velikost</fo:block>
-                            </fo:table-cell>
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block><xsl:value-of select="dt:serving/dt:specification/dt:size_category"/></fo:block>
-                            </fo:table-cell>
-                        </fo:table-row>
-                    </xsl:if>
+                    <fo:table-row background-color="#e9ecef">
+                        <fo:table-cell padding="2mm" border-bottom="1pt solid #dee2e6">
+                            <fo:block>Sacharidy</fo:block>
+                        </fo:table-cell>
+                        <fo:table-cell padding="2mm" border-bottom="1pt solid #dee2e6">
+                            <fo:block><xsl:value-of select="format-number(dt:base_values_per_100g/dt:carbohydrates/dt:total * $multiplier, '#,##0.0')"/> g</fo:block>
+                        </fo:table-cell>
+                    </fo:table-row>
                     <fo:table-row>
-                        <fo:table-cell padding="2mm">
-                            <fo:block font-weight="bold">Celková hmotnost</fo:block>
+                        <fo:table-cell padding="2mm" border-bottom="1pt solid #dee2e6">
+                            <fo:block>Tuky</fo:block>
                         </fo:table-cell>
-                        <fo:table-cell padding="2mm">
-                            <fo:block>
-                                <xsl:value-of select="format-number(dt:serving/dt:count * dt:serving/dt:weight, '0.0')"/> g
-                            </fo:block>
+                        <fo:table-cell padding="2mm" border-bottom="1pt solid #dee2e6">
+                            <fo:block><xsl:value-of select="format-number(dt:base_values_per_100g/dt:fats/dt:total * $multiplier, '#,##0.0')"/> g</fo:block>
                         </fo:table-cell>
                     </fo:table-row>
-                </fo:table-body>
-            </fo:table>
-
-            <!-- Nutrition values -->
-            <fo:block font-size="14pt" font-weight="bold" space-before="3mm" 
-                space-after="2mm" color="#34495e">
-                Nutriční hodnoty na 100g
-            </fo:block>
-
-            <fo:table table-layout="fixed" width="100%" space-after="5mm" 
-                border="1pt solid #bdc3c7">
-                <fo:table-column column-width="60%"/>
-                <fo:table-column column-width="40%"/>
-                <fo:table-header>
-                    <fo:table-row background-color="#34495e" color="white">
-                        <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                            <fo:block font-weight="bold">Živina</fo:block>
-                        </fo:table-cell>
-                        <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                            <fo:block font-weight="bold">Hodnota</fo:block>
-                        </fo:table-cell>
-                    </fo:table-row>
-                </fo:table-header>
-                <fo:table-body>
-                    <!-- Energy -->
-                    <fo:table-row background-color="#ecf0f1">
-                        <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                            <fo:block font-weight="bold">Energie</fo:block>
-                        </fo:table-cell>
-                        <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                            <fo:block font-weight="bold">
-                                <xsl:value-of select="format-number(dt:base_values_per_100g/dt:energy div 4184, '0')"/> kcal
-                            </fo:block>
-                        </fo:table-cell>
-                    </fo:table-row>
-                    
-                    <!-- Protein -->
-                    <xsl:if test="dt:base_values_per_100g/dt:protein">
-                        <fo:table-row>
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block>Bílkoviny</fo:block>
-                            </fo:table-cell>
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block>
-                                    <xsl:value-of select="format-number(dt:base_values_per_100g/dt:protein, '0.00')"/> g
-                                </fo:block>
-                            </fo:table-cell>
-                        </fo:table-row>
-                    </xsl:if>
-                    
-                    <!-- Carbohydrates -->
-                    <xsl:if test="dt:base_values_per_100g/dt:carbohydrates">
-                        <fo:table-row background-color="#ecf0f1">
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block font-weight="bold">Sacharidy</fo:block>
-                            </fo:table-cell>
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block font-weight="bold">
-                                    <xsl:value-of select="format-number(dt:base_values_per_100g/dt:carbohydrates/dt:total, '0.00')"/> g
-                                </fo:block>
-                            </fo:table-cell>
-                        </fo:table-row>
-                        <fo:table-row>
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7" start-indent="5mm">
-                                <fo:block>z toho cukry</fo:block>
-                            </fo:table-cell>
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block>
-                                    <xsl:value-of select="format-number(dt:base_values_per_100g/dt:carbohydrates/dt:sugars, '0.00')"/> g
-                                </fo:block>
-                            </fo:table-cell>
-                        </fo:table-row>
-                    </xsl:if>
-                    
-                    <!-- Fats -->
-                    <xsl:if test="dt:base_values_per_100g/dt:fats">
-                        <fo:table-row background-color="#ecf0f1">
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block font-weight="bold">Tuky</fo:block>
-                            </fo:table-cell>
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block font-weight="bold">
-                                    <xsl:value-of select="format-number(dt:base_values_per_100g/dt:fats/dt:total, '0.00')"/> g
-                                </fo:block>
-                            </fo:table-cell>
-                        </fo:table-row>
-                        <xsl:if test="dt:base_values_per_100g/dt:fats/dt:saturated_fats">
-                            <fo:table-row>
-                                <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7" start-indent="5mm">
-                                    <fo:block>nasycené tuky</fo:block>
-                                </fo:table-cell>
-                                <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                    <fo:block>
-                                        <xsl:value-of select="format-number(dt:base_values_per_100g/dt:fats/dt:saturated_fats, '0.00')"/> g
-                                    </fo:block>
-                                </fo:table-cell>
-                            </fo:table-row>
-                        </xsl:if>
-                        <xsl:if test="dt:base_values_per_100g/dt:fats/dt:trans_fats">
-                            <fo:table-row>
-                                <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7" start-indent="5mm">
-                                    <fo:block>trans tuky</fo:block>
-                                </fo:table-cell>
-                                <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                    <fo:block>
-                                        <xsl:value-of select="format-number(dt:base_values_per_100g/dt:fats/dt:trans_fats, '0.00')"/> g
-                                    </fo:block>
-                                </fo:table-cell>
-                            </fo:table-row>
-                        </xsl:if>
-                        <xsl:if test="dt:base_values_per_100g/dt:fats/dt:monosaturated_fats">
-                            <fo:table-row>
-                                <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7" start-indent="5mm">
-                                    <fo:block>mononenasycené tuky</fo:block>
-                                </fo:table-cell>
-                                <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                    <fo:block>
-                                        <xsl:value-of select="format-number(dt:base_values_per_100g/dt:fats/dt:monosaturated_fats, '0.00')"/> g
-                                    </fo:block>
-                                </fo:table-cell>
-                            </fo:table-row>
-                        </xsl:if>
-                        <xsl:if test="dt:base_values_per_100g/dt:fats/dt:polysaturated_fats">
-                            <fo:table-row>
-                                <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7" start-indent="5mm">
-                                    <fo:block>polynenasycené tuky</fo:block>
-                                </fo:table-cell>
-                                <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                    <fo:block>
-                                        <xsl:value-of select="format-number(dt:base_values_per_100g/dt:fats/dt:polysaturated_fats, '0.00')"/> g
-                                    </fo:block>
-                                </fo:table-cell>
-                            </fo:table-row>
-                        </xsl:if>
-                    </xsl:if>
-                    
-                    <!-- Other nutrients -->
-                    <xsl:if test="dt:base_values_per_100g/dt:cholesterol">
-                        <fo:table-row background-color="#ecf0f1">
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block>Cholesterol</fo:block>
-                            </fo:table-cell>
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block>
-                                    <xsl:value-of select="format-number(dt:base_values_per_100g/dt:cholesterol, '0')"/> mg
-                                </fo:block>
-                            </fo:table-cell>
-                        </fo:table-row>
-                    </xsl:if>
-                    
                     <xsl:if test="dt:base_values_per_100g/dt:fiber">
-                        <fo:table-row>
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
+                        <fo:table-row background-color="#e9ecef">
+                            <fo:table-cell padding="2mm">
                                 <fo:block>Vláknina</fo:block>
                             </fo:table-cell>
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block>
-                                    <xsl:value-of select="format-number(dt:base_values_per_100g/dt:fiber, '0.00')"/> g
-                                </fo:block>
-                            </fo:table-cell>
-                        </fo:table-row>
-                    </xsl:if>
-                    
-                    <xsl:if test="dt:base_values_per_100g/dt:sodium">
-                        <fo:table-row background-color="#ecf0f1">
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block>Sodík</fo:block>
-                            </fo:table-cell>
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block>
-                                    <xsl:value-of select="format-number(dt:base_values_per_100g/dt:sodium, '0')"/> mg
-                                </fo:block>
-                            </fo:table-cell>
-                        </fo:table-row>
-                    </xsl:if>
-                    
-                    <xsl:if test="dt:base_values_per_100g/dt:salt">
-                        <fo:table-row>
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block>Sůl</fo:block>
-                            </fo:table-cell>
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block>
-                                    <xsl:value-of select="format-number(dt:base_values_per_100g/dt:salt, '0.00')"/> g
-                                </fo:block>
-                            </fo:table-cell>
-                        </fo:table-row>
-                    </xsl:if>
-                    
-                    <xsl:if test="dt:base_values_per_100g/dt:calcium">
-                        <fo:table-row background-color="#ecf0f1">
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block>Vápník</fo:block>
-                            </fo:table-cell>
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block>
-                                    <xsl:value-of select="format-number(dt:base_values_per_100g/dt:calcium, '0')"/> mg
-                                </fo:block>
-                            </fo:table-cell>
-                        </fo:table-row>
-                    </xsl:if>
-                    
-                    <xsl:if test="dt:base_values_per_100g/dt:water">
-                        <fo:table-row>
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block>Voda</fo:block>
-                            </fo:table-cell>
-                            <fo:table-cell padding="2mm" border-bottom="1pt solid #bdc3c7">
-                                <fo:block>
-                                    <xsl:value-of select="format-number(dt:base_values_per_100g/dt:water, '0.00')"/> g
-                                </fo:block>
-                            </fo:table-cell>
-                        </fo:table-row>
-                    </xsl:if>
-                    
-                    <xsl:if test="dt:base_values_per_100g/dt:phe">
-                        <fo:table-row background-color="#ecf0f1">
                             <fo:table-cell padding="2mm">
-                                <fo:block>Fenylalanin (Phe)</fo:block>
-                            </fo:table-cell>
-                            <fo:table-cell padding="2mm">
-                                <fo:block>
-                                    <xsl:value-of select="format-number(dt:base_values_per_100g/dt:phe, '0')"/> mg
-                                </fo:block>
+                                <fo:block><xsl:value-of select="format-number(dt:base_values_per_100g/dt:fiber * $multiplier, '#,##0.0')"/> g</fo:block>
                             </fo:table-cell>
                         </fo:table-row>
                     </xsl:if>
@@ -761,5 +514,6 @@
             </fo:table>
         </fo:block>
     </xsl:template>
+
 
 </xsl:stylesheet>
