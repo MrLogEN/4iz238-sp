@@ -10,12 +10,37 @@ Uživatel si každý den zaznamenává veškerá jídla, která skonzumoval. Tat
 
 Co se jídel týče, ty se mohou skládat bud z již hotových jídel, které mají své nutriční hodnoty stejné (hamburger v mekáči) nebo je možné jídlo složit ze základních, ale i jiných složitějších potravin.
 
+## Validation
+
+### Schematron Validation
+
+The project includes Schematron rules to validate business logic constraints that cannot be expressed in XSD alone. These rules ensure that nutritional component values (like sugars, fat types) do not exceed their total values.
+
+For detailed information about validation rules and how to use them, see [SCHEMATRON.md](SCHEMATRON.md).
+
+For a complete list of all validation points, see [SCHEMATRON_SUMMARY.md](SCHEMATRON_SUMMARY.md).
+
+**Quick validation** (no setup required):
+```bash
+python3 validate_simple.py xml/diet_tracker.xml
+```
+
+**Full Schematron validation** (requires ISO Schematron setup):
+```bash
+./validate_schematron.sh
+```
+
+### XSD Schema Validation
+
+The XML is validated against the XSD schema (`schemas/diet_tracker.xsd`) during transformations.
+
 ## Build Process
 
 ### Prerequisites
 - Java (for Saxon and Apache FOP)
 - Python 3 (for image download script)
 - curl (for downloading images)
+- xmllint (for Schematron validation, optional)
 
 ### Building HTML and PDF outputs
 

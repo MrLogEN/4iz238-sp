@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diet_tracker version="1.0" xmlns="urn:vse:4iz238:chav07:sp:diet_tracker"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:vse:4iz238:chav07:sp:diet_tracker schemas/diet_tracker.xsd">
+    <user id="1">
+        <name>Test User</name>
+        <email>test@example.com</email>
+        <date_of_birth>1990-01-01</date_of_birth>
+        <sex>male</sex>
+        <current_state>
+            <height>1.75</height>
+            <weight>75000</weight>
+        </current_state>
+        <long_term_goals>
+            <weight>70000</weight>
+        </long_term_goals>
+        <daily_logs>
+            <daily_log date="2025-11-21">
+                <daily_goal>
+                    <energy>8000000</energy>
+                    <water>2000</water>
+                    <protein>100</protein>
+                    <carbohydrates>
+                        <total>200</total>
+                        <sugars>250</sugars><!-- INVALID: sugars > total -->
+                    </carbohydrates>
+                    <fats>
+                        <total>40</total>
+                        <saturated_fats>50</saturated_fats><!-- INVALID: saturated > total -->
+                        <trans_fats>2</trans_fats>
+                    </fats>
+                    <cholesterol>300</cholesterol>
+                    <fiber>25</fiber>
+                    <calcium>1000</calcium>
+                    <sodium>2300</sodium>
+                    <salt>5.8</salt>
+                    <phe>500</phe>
+                </daily_goal>
+                <meals>
+                    <meal id="1">
+                        <name>Test Meal</name>
+                        <servings>1</servings>
+                        <ingredients>
+                            <ingredient id="1">
+                                <name>Test Ingredient</name>
+                                <serving>
+                                    <count>1</count>
+                                    <weight>100</weight>
+                                </serving>
+                                <img>images/test.jpg</img>
+                                <base_values_per_100g>
+                                    <energy>1000000</energy>
+                                    <carbohydrates>
+                                        <total>50</total>
+                                        <sugars>60</sugars><!-- INVALID: sugars > total -->
+                                    </carbohydrates>
+                                    <fats>
+                                        <total>10</total>
+                                        <saturated_fats>5</saturated_fats>
+                                        <trans_fats>3</trans_fats>
+                                        <monosaturated_fats>4</monosaturated_fats>
+                                        <polysaturated_fats>2</polysaturated_fats>
+                                        <!-- INVALID: sum = 14 > total = 10 -->
+                                    </fats>
+                                </base_values_per_100g>
+                            </ingredient>
+                        </ingredients>
+                    </meal>
+                </meals>
+            </daily_log>
+        </daily_logs>
+    </user>
+</diet_tracker>
